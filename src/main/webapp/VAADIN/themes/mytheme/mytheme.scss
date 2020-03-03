@@ -1,0 +1,291 @@
+// If you edit this file you need to compile the theme. See README.md for details.
+
+// Global variable overrides. Must be declared before importing Valo.
+
+// Defines the plaintext font size, weight and family. Font size affects general component sizing.
+//$v-font-size: 16px;
+//$v-font-weight: 300;
+//$v-font-family: "Helvetica Neue", sans-serif;
+
+// Defines the border used by all components.
+//$v-border: 1px solid (v-shade 0.7);
+//$v-border-radius: 4px;
+
+// Affects the color of some component elements, e.g Button, Panel title, etc
+//$v-background-color: hsl(210, 0%, 98%);
+// Affects the color of content areas, e.g  Panel and Window content, TextField input etc
+//$v-app-background-color: $v-background-color;
+
+// Affects the visual appearance of all components
+//$v-gradient: v-linear 8%;
+//$v-bevel-depth: 30%;
+//$v-shadow-opacity: 5%;
+
+// Defines colors for indicating status (focus, success, failure)
+//$v-focus-color: valo-focus-color(); // Calculates a suitable color automatically
+//$v-friendly-color: #2c9720;
+//$v-error-indicator-color: #ed473b;
+
+// For more information, see: https://vaadin.com/book/-/page/themes.valo.html
+// Example variants can be copy/pasted from https://vaadin.com/wiki/-/wiki/Main/Valo+Examples
+
+@import "../valo/valo.scss";
+
+@mixin mytheme {
+    @include valo;
+
+    // Insert your own theme rules here
+
+
+
+    .rangeslider .v-slider-base{
+        margin:0px;
+        margin-left:0px !important;
+        margin-right:0px !important;
+
+    }
+    .rangeslider .v-slider-base:before {
+        content: "";
+        position: absolute;
+        top: 16px;
+        bottom: 16px;
+        left: 0px !important;
+        width: 8px;
+        border-radius: 1px;
+        background-color:lightgray !important;
+    }
+    .rangeslider .v-slider-base:after {
+        border-radius: 4px;
+        height: inherit;
+        background: lightgray;
+        border: 1px solid lightgray;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        max-width: 100%;
+        content: "";
+        display: inline-block;
+        margin-left: -100%;
+        width: 100%;
+        vertical-align: top;
+    }
+
+
+    .rangeslider .v-slider-handle:before {
+        height: 20px !important;
+        width:10px !important;
+    }
+
+
+
+    .rangeslider .v-slider-handle:before, .rangeslider .v-slider-handle:after {
+        content: "";
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 0 !important;
+        width: 10px;
+        height: 20px;
+        border-radius: 11px;
+        margin-left: 0px;
+        margin-right:0px !important
+    }
+
+
+    .v-absolutelayout-wrapper-floattocenter{
+        width:100% !important;
+        height:100% !important;
+        display: block !important;   
+        position:absolute !important;
+    }
+    .v-horizontallayout-floattocenter,.v-horizontallayout-floattocenter .v-slot{
+        width:100% !important;
+        height:100% !important;
+    }
+    .idsearchresults {
+        min-height:30px;
+
+    }
+    .idsearchresults .v-link{
+        text-decoration:none !important;
+        font-size:15px !important;
+    }
+    .idsearchresults .v-link span{
+        text-decoration:none !important;
+        font-size:14px  !important;
+
+    }
+    .idsearchresults .v-link span:hover{
+        text-decoration:underline !important;
+
+    }
+
+    .v-absolutelayout-wrapper-idsearchresults{
+        margin-left:-22px;
+        margin-bottom:-12px
+
+    }
+    .idsearchresults .Vaadin-Icons{
+        color:black !important;
+        border:2px solid lightgray;
+        padding:2px;
+        border-radius:5px;
+        width:22px !important;
+        height:22px !important;
+        text-align:center;
+        position:relative !important;
+        line-height:22px !important;
+        background-color:whitesmoke !important;
+    }
+    .visibleoverflow .v-absolutelayout-margin{
+        overflow:visible !important;
+    }
+    .limitlabelsize{
+        max-width:250px ;
+        text-align:justify;
+        border:1px solid lightgray;
+        border-radius:5px;
+        padding:10px;
+        padding-top:15px;
+        line-height:25px;
+    }
+
+
+    .limitlabelsize.idsearchresults .Vaadin-Icons{
+        top:-30px;
+
+    }
+
+    .limitlabelsize .v-icon + span {
+        margin-left: -30px;
+    }
+    .v-link-probelogo img{
+        margin-top:-5px;
+        margin-left: 44px;
+    }
+
+
+    .idresults{
+        position:absolute;top: -61px !important;left: -10px !important;
+    }
+
+    .maxwidth600 .v-select-optiongroup{
+        z-index:3 !important;
+        position:relative !important;
+    }
+    .v-verticallayout-collapsedDCheadercell {   
+        display:none;
+    }
+    .diseasecategorylabel  {
+        border:none ;
+
+    }
+
+    .v-verticallayout-diseasecategorylabel div{     
+        font-size:14px !important;
+        line-height:100% !important;
+
+    }
+    .v-absolutelayout-wrapper-diseasecategorylabel{
+        margin-left:-20px;
+        min-width:149px !important;
+
+
+    }
+    .v-verticallayout-diseasecategorylabel div{
+
+        min-width:149px !important;
+
+
+
+
+    }
+    .v-verticallayout-diseasecategorylabel .v-label {
+
+        min-width:149px !important;
+        line-height:18px !important;
+        border:1px solid #dce0e0;
+
+
+    }
+
+    .v-verticallayout-diseasecategorylabel .v-label-rotateheader{
+        min-width:149px !important;
+        margin-top:-20px;
+        margin-left:21px !important;
+        z-index:2 !important;
+        position:relative;
+        border:none !important;
+        line-height:18px !important;
+    }
+    .v-verticallayout-diseasecategorylabel.v-verticallayout-heatmapcell:hover{
+        border:none !important;
+    }
+    .v-verticallayout-diseasecategorylabel  .v-label-hmparkinsonsstyle{
+        letter-spacing: 0.1em;
+    }
+
+    .v-verticallayout-diseasecategorylabel  .v-label-hmalzheimersstyle {   
+        letter-spacing: 0.1em;
+    }
+    .v-verticallayout-diseasecategorylabel  .v-label-hmmultiplesclerosisstyle {   
+        letter-spacing: 0.1em;
+    }
+    .v-verticallayout-diseasecategorylabel  .v-label-hmamyotrophiclateralsclerosisstyle {   
+        letter-spacing:  0.1em !important;
+    }
+
+    .v-verticallayout-diseasecategorylabel .v-icon{
+        left:10px;
+        font-size:10px !important;
+        position:absolute;
+    }
+
+
+
+    .v-label-hmparkinsonsstyle .v-icon-compress_square, .v-label-hmmultiplesclerosisstyle .v-icon-compress_square, .v-label-hmalzheimersstyle .v-icon-compress_square, .v-label-hmamyotrophiclateralsclerosisstyle .v-icon-compress_square{   
+        font-size:10px !important;
+        visibility:hidden;
+
+    }
+
+
+    .v-label-hmmultiplesclerosisstyle:hover > .v-icon-compress_square,.v-label-hmalzheimersstyle:hover > .v-icon-compress_square,.v-label-hmamyotrophiclateralsclerosisstyle:hover > .v-icon-compress_square,.v-label-hmparkinsonsstyle:hover > .v-icon-compress_square{
+        visibility:visible !important;
+    }
+
+
+
+    .v-verticallayout-diseasecategorylabel .v-icon{
+        left:10px;
+        font-size:10px !important;
+        position:absolute;
+        visibility:hidden;
+    }
+
+    .v-verticallayout-diseasecategorylabel .v-label-rotateheader .v-icon{
+        right:7px !important;
+        position:absolute !important;
+        left:auto !important;
+    }
+
+    .v-verticallayout-diseasecategorylabel :hover > .v-icon{
+        visibility:visible !important;
+    }
+    .appliedfilter{
+        border-color: gray;
+        border-width: 1px;
+        opacity: 1 !important;
+        -webkit-transition: all .5s ease-in-out;
+        -moz-transition: all .5s ease-in-out;
+        -o-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+        box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2), inset 0px 25px 0px 1px rgba(255, 255, 255, 1);
+        -webkit-box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2), inset 0px 25px 0px 1px rgba(255, 255, 255, 1);
+        -moz-box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2), inset 0px 25px 0px 1px rgba(255, 255, 255, 1);
+    }
+    .unselectedpiechart{
+    opacity:0.6
+}
+}
+

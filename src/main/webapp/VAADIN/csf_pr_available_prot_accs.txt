@@ -1,0 +1,8 @@
+2018.09.26 ; Added data from 5 papers
+           ; Timirci-Kahraman, et al. (2018), Begcevic, et al. (06/2018 , 07/2018),
+           ; Brinkmalm, et al. (2018), Stoop, et al. (2017)
+2017.09.26 ; Added data from Paterson, et al. (2016)
+2017.08.08 ; Added protein table filters (filter on protein trend, filter on number of studies)
+2017.07.12 ; Added data from Pavelek et al. (2016)
+2017.01.18 ; Updated the protein naming and sorting of the protein table
+2017.01.06 ; Fixed error in regulation between RRMS and CIS in the Hinsinger study (2015)
