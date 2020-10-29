@@ -834,7 +834,6 @@ public class DatasetUtility implements Serializable {
             sortedAllSubGroupMap.putAll(subGroupMap);
         });
         sortedMap.put("All Diseases", sortedAllSubGroupMap);
-
         return sortedMap;
     }
 
@@ -881,6 +880,8 @@ public class DatasetUtility implements Serializable {
             searchingDataMap.put("Multiple Sclerosis", searchingData);
             DiseaseCategoryObject diseaseCategoryObject = searchCompareDiseaseCategoryMap.get("Multiple Sclerosis");
             diseaseCategoryObject.setDatasetNumber(0);
+            diseaseCategoryObject.setDiseaseSubGroups(inUse_DiseaseCat_DiseaseGroupMap.get(diseaseCategoryObject.getDiseaseCategory()));
+            diseaseCategoryObject.setDiseaseSubGroupsToFullName(diseaseGroupFullNameMap);
             activeDiseaseCategoryMap.put(diseaseCategoryObject.getDiseaseCategory(), diseaseCategoryObject);
         }
         if (searchSelection.getDiseaseCategories().contains("Alzheimer's")) {
@@ -892,6 +893,8 @@ public class DatasetUtility implements Serializable {
             searchingDataMap.put("Alzheimer's", searchingData);
             DiseaseCategoryObject diseaseCategoryObject = searchCompareDiseaseCategoryMap.get("Alzheimer's");
             diseaseCategoryObject.setDatasetNumber(0);
+            diseaseCategoryObject.setDiseaseSubGroups(inUse_DiseaseCat_DiseaseGroupMap.get(diseaseCategoryObject.getDiseaseCategory()));
+            diseaseCategoryObject.setDiseaseSubGroupsToFullName(diseaseGroupFullNameMap);
             activeDiseaseCategoryMap.put(diseaseCategoryObject.getDiseaseCategory(), diseaseCategoryObject);
         }
         if (searchSelection.getDiseaseCategories().contains("Parkinson's")) {
@@ -903,6 +906,8 @@ public class DatasetUtility implements Serializable {
             searchingDataMap.put("Parkinson's", searchingData);
             DiseaseCategoryObject diseaseCategoryObject = searchCompareDiseaseCategoryMap.get("Parkinson's");
             diseaseCategoryObject.setDatasetNumber(0);
+            diseaseCategoryObject.setDiseaseSubGroups(inUse_DiseaseCat_DiseaseGroupMap.get(diseaseCategoryObject.getDiseaseCategory()));
+            diseaseCategoryObject.setDiseaseSubGroupsToFullName(diseaseGroupFullNameMap);
             activeDiseaseCategoryMap.put(diseaseCategoryObject.getDiseaseCategory(), diseaseCategoryObject);
         }
         if (searchSelection.getDiseaseCategories().contains("Amyotrophic Lateral Sclerosis")) {
@@ -919,6 +924,8 @@ public class DatasetUtility implements Serializable {
 
         DiseaseCategoryObject diseaseCategoryObject = searchCompareDiseaseCategoryMap.get("All Diseases");
         diseaseCategoryObject.setDatasetNumber(0);
+        diseaseCategoryObject.setDiseaseSubGroups(inUse_DiseaseCat_DiseaseGroupMap.get(diseaseCategoryObject.getDiseaseCategory()));
+            diseaseCategoryObject.setDiseaseSubGroupsToFullName(diseaseGroupFullNameMap);
         activeDiseaseCategoryMap.put(diseaseCategoryObject.getDiseaseCategory(), diseaseCategoryObject);
 
         QuantData refData = quantDataMap.get("All Diseases");
@@ -1034,7 +1041,7 @@ public class DatasetUtility implements Serializable {
     }
 
     /**
-     *Reset active data to default removing search and compare data
+     * Reset active data to default removing search and compare data
      */
     public void resetToDefault() {
         activeQuantDatasetsIndexes = null;

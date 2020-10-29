@@ -48,19 +48,19 @@ public class WelcomeLayoutComponents extends VerticalLayout implements Serializa
     /**
      * The top right thumb buttons container.
      */
-    private  HorizontalLayout topRightThumbBtnsLayoutContainer;
+    private HorizontalLayout topRightThumbBtnsLayoutContainer;
     /**
      * The top right reset system thumb button.
      */
-    private  ImageContainerBtn resetThumbBtn;
+    private ImageContainerBtn resetThumbBtn;
     /**
      * The top right searching thumb button.
      */
-    private  ImageContainerBtn searchThumbBtn;
+    private ImageContainerBtn searchThumbBtn;
     /**
      * The top right compare user data thumb button.
      */
-    private  ImageContainerBtn compareThumbBtn;
+    private ImageContainerBtn compareThumbBtn;
 
     /**
      * Get the top right thumb buttons container
@@ -85,8 +85,6 @@ public class WelcomeLayoutComponents extends VerticalLayout implements Serializa
      * @param bodyWidth current screen with
      */
     public WelcomeLayoutComponents(final Data_Handler Data_handler, CSFPR_Central_Manager CSFPR_Central_Manager, final LayoutViewManager View_Manager, int bodyWidth, int bodyHeight, OverviewInfoBean overviewInfoBean, List<Object[]> publicationList, Set<QuantDataset> dsObjects) {
-
-  
 
         this.setWidth(980, Unit.PIXELS);
         this.setHeight(100, Unit.PERCENTAGE);
@@ -160,279 +158,279 @@ public class WelcomeLayoutComponents extends VerticalLayout implements Serializa
             }
 
         };
-        if (dsObjects == null) {           
-        return;
+        if (dsObjects == null) {
+            return;
         }
 
-            CSFPR_Central_Manager.setFullPublicationList(publicationList);
-            sub2quantStatLabelWrapper.updateData(dsObjects);
-            subQuantStatLayout.addComponent(sub2quantStatLabelWrapper, 0, 0);
-            sub2quantStatLabelWrapper.setDescription("Click to view datasets information");
+        CSFPR_Central_Manager.setFullPublicationList(publicationList);
+        sub2quantStatLabelWrapper.updateData(dsObjects);
+        subQuantStatLayout.addComponent(sub2quantStatLabelWrapper, 0, 0);
+        sub2quantStatLabelWrapper.setDescription("Click to view datasets information");
 
-            Label sub2quantStatLabel = new Label("#Datasets");
-            sub2quantStatLabel.addStyleName("link");
-            sub2quantStatLabel.addStyleName(ValoTheme.LABEL_SMALL);
-            sub2quantStatLabel.addStyleName(ValoTheme.LABEL_TINY);
+        Label sub2quantStatLabel = new Label("#Datasets");
+        sub2quantStatLabel.addStyleName("link");
+        sub2quantStatLabel.addStyleName(ValoTheme.LABEL_SMALL);
+        sub2quantStatLabel.addStyleName(ValoTheme.LABEL_TINY);
 
-            sub2quantStatLabel.addStyleName("nomargin");
-            sub2quantStatLabelWrapper.addStyleName("nomargin");
-            sub2quantStatLabelWrapper.addComponent(sub2quantStatLabel);
+        sub2quantStatLabel.addStyleName("nomargin");
+        sub2quantStatLabelWrapper.addStyleName("nomargin");
+        sub2quantStatLabelWrapper.addComponent(sub2quantStatLabel);
 
-            Label sub2QuantStatValue = new Label(overviewInfoBean.getNumberOfQuantDatasets() + "");
-            sub2QuantStatValue.addStyleName(ValoTheme.LABEL_SMALL);
-            sub2QuantStatValue.addStyleName(ValoTheme.LABEL_TINY);
-            sub2QuantStatValue.addStyleName("nomargin");
-            sub2QuantStatValue.addStyleName("rightaligntext");
-            sub2QuantStatValue.setWidth(40, Unit.PIXELS);
-            subQuantStatLayout.addComponent(sub2QuantStatValue, 1, 0);
-            subQuantStatLayout.setComponentAlignment(sub2QuantStatValue, Alignment.MIDDLE_RIGHT);
+        Label sub2QuantStatValue = new Label(overviewInfoBean.getNumberOfQuantDatasets() + "");
+        sub2QuantStatValue.addStyleName(ValoTheme.LABEL_SMALL);
+        sub2QuantStatValue.addStyleName(ValoTheme.LABEL_TINY);
+        sub2QuantStatValue.addStyleName("nomargin");
+        sub2QuantStatValue.addStyleName("rightaligntext");
+        sub2QuantStatValue.setWidth(40, Unit.PIXELS);
+        subQuantStatLayout.addComponent(sub2QuantStatValue, 1, 0);
+        subQuantStatLayout.setComponentAlignment(sub2QuantStatValue, Alignment.MIDDLE_RIGHT);
 
-            Label sub3quantStatLabel = new Label("#Proteins");
-            sub3quantStatLabel.addStyleName(ValoTheme.LABEL_SMALL);
-            sub3quantStatLabel.addStyleName(ValoTheme.LABEL_TINY);
-            sub3quantStatLabel.addStyleName("nomargin");
-            subQuantStatLayout.addComponent(sub3quantStatLabel, 0, 1);
+        Label sub3quantStatLabel = new Label("#Proteins");
+        sub3quantStatLabel.addStyleName(ValoTheme.LABEL_SMALL);
+        sub3quantStatLabel.addStyleName(ValoTheme.LABEL_TINY);
+        sub3quantStatLabel.addStyleName("nomargin");
+        subQuantStatLayout.addComponent(sub3quantStatLabel, 0, 1);
 
-            Label sub3QuantStatValue = new Label("" + overviewInfoBean.getNumberOfQuantProteins());
-            sub3QuantStatValue.addStyleName(ValoTheme.LABEL_SMALL);
-            sub3QuantStatValue.addStyleName(ValoTheme.LABEL_TINY);
-            sub3QuantStatValue.addStyleName("nomargin");
-            sub3QuantStatValue.addStyleName("rightaligntext");
-            subQuantStatLayout.addComponent(sub3QuantStatValue, 1, 1);
-            subQuantStatLayout.setComponentAlignment(sub3QuantStatValue, Alignment.MIDDLE_RIGHT);
+        Label sub3QuantStatValue = new Label("" + overviewInfoBean.getNumberOfQuantProteins());
+        sub3QuantStatValue.addStyleName(ValoTheme.LABEL_SMALL);
+        sub3QuantStatValue.addStyleName(ValoTheme.LABEL_TINY);
+        sub3QuantStatValue.addStyleName("nomargin");
+        sub3QuantStatValue.addStyleName("rightaligntext");
+        subQuantStatLayout.addComponent(sub3QuantStatValue, 1, 1);
+        subQuantStatLayout.setComponentAlignment(sub3QuantStatValue, Alignment.MIDDLE_RIGHT);
 
-            Label sub4quantStatLabel = new Label("#Peptides");
-            sub4quantStatLabel.addStyleName(ValoTheme.LABEL_SMALL);
-            sub4quantStatLabel.addStyleName("nomargin");
-            sub4quantStatLabel.addStyleName(ValoTheme.LABEL_TINY);
-            subQuantStatLayout.addComponent(sub4quantStatLabel, 0, 2);
+        Label sub4quantStatLabel = new Label("#Peptides");
+        sub4quantStatLabel.addStyleName(ValoTheme.LABEL_SMALL);
+        sub4quantStatLabel.addStyleName("nomargin");
+        sub4quantStatLabel.addStyleName(ValoTheme.LABEL_TINY);
+        subQuantStatLayout.addComponent(sub4quantStatLabel, 0, 2);
 
-            Label sub4QuantStatValue = new Label("" + overviewInfoBean.getNumberOfQuantPeptides());
-            sub4QuantStatValue.addStyleName(ValoTheme.LABEL_SMALL);
-            sub4QuantStatValue.addStyleName("rightaligntext");
-            subQuantStatLayout.addComponent(sub4QuantStatValue, 1, 2);
-            subQuantStatLayout.setComponentAlignment(sub4QuantStatValue, Alignment.MIDDLE_RIGHT);
+        Label sub4QuantStatValue = new Label("" + overviewInfoBean.getNumberOfQuantPeptides());
+        sub4QuantStatValue.addStyleName(ValoTheme.LABEL_SMALL);
+        sub4QuantStatValue.addStyleName("rightaligntext");
+        subQuantStatLayout.addComponent(sub4QuantStatValue, 1, 2);
+        subQuantStatLayout.setComponentAlignment(sub4QuantStatValue, Alignment.MIDDLE_RIGHT);
 
-            subQuantStatLayout.setColumnExpandRatio(0, 2);
-            subQuantStatLayout.setColumnExpandRatio(1, 1);
+        subQuantStatLayout.setColumnExpandRatio(0, 2);
+        subQuantStatLayout.setColumnExpandRatio(1, 1);
 
-            Label idStatLabel = new Label("Identification Data");
-            idStatLabel.setHeight(20, Unit.PIXELS);
-            idStatLabel.addStyleName(ValoTheme.LABEL_BOLD);
-            idStatLabel.addStyleName(ValoTheme.LABEL_H4);
-            idStatLabel.addStyleName(ValoTheme.LABEL_TINY);
-            idStatLabel.addStyleName("nomargin");
-            idStatLabel.addStyleName("margintop15");
-            leftPanelResorceStatContainer.addComponent(idStatLabel);
+        Label idStatLabel = new Label("Identification Data");
+        idStatLabel.setHeight(20, Unit.PIXELS);
+        idStatLabel.addStyleName(ValoTheme.LABEL_BOLD);
+        idStatLabel.addStyleName(ValoTheme.LABEL_H4);
+        idStatLabel.addStyleName(ValoTheme.LABEL_TINY);
+        idStatLabel.addStyleName("nomargin");
+        idStatLabel.addStyleName("margintop15");
+        leftPanelResorceStatContainer.addComponent(idStatLabel);
 
-            GridLayout subIdStatLayout = new GridLayout(2, 4);
-            subIdStatLayout.setMargin(new MarginInfo(false, false, false, false));
-            subIdStatLayout.setWidth(100, Unit.PERCENTAGE);
-            subIdStatLayout.setSpacing(true);
-            leftPanelResorceStatContainer.addComponent(subIdStatLayout);
+        GridLayout subIdStatLayout = new GridLayout(2, 4);
+        subIdStatLayout.setMargin(new MarginInfo(false, false, false, false));
+        subIdStatLayout.setWidth(100, Unit.PERCENTAGE);
+        subIdStatLayout.setSpacing(true);
+        leftPanelResorceStatContainer.addComponent(subIdStatLayout);
 
-            Label sub2IdStatLabel = new Label("#Datasets");
-            sub2IdStatLabel.addStyleName(ValoTheme.LABEL_SMALL);
-            sub2IdStatLabel.addStyleName(ValoTheme.LABEL_TINY);
-            sub2IdStatLabel.addStyleName("nomargin");
-            subIdStatLayout.addComponent(sub2IdStatLabel, 0, 1);
-            subIdStatLayout.setColumnExpandRatio(0, 2);
-            subIdStatLayout.setColumnExpandRatio(1, 1);
+        Label sub2IdStatLabel = new Label("#Datasets");
+        sub2IdStatLabel.addStyleName(ValoTheme.LABEL_SMALL);
+        sub2IdStatLabel.addStyleName(ValoTheme.LABEL_TINY);
+        sub2IdStatLabel.addStyleName("nomargin");
+        subIdStatLayout.addComponent(sub2IdStatLabel, 0, 1);
+        subIdStatLayout.setColumnExpandRatio(0, 2);
+        subIdStatLayout.setColumnExpandRatio(1, 1);
 
-            Label sub2IdStatValue = new Label("" + overviewInfoBean.getNumberOfIdStudies());
-            sub2IdStatValue.addStyleName(ValoTheme.LABEL_SMALL);
-            sub2IdStatValue.addStyleName(ValoTheme.LABEL_TINY);
-            sub2IdStatValue.addStyleName("nomargin");
-            sub2IdStatValue.addStyleName("rightaligntext");
-            sub2IdStatValue.setWidth(60, Unit.PIXELS);
-            subIdStatLayout.addComponent(sub2IdStatValue, 1, 1);
-            subIdStatLayout.setComponentAlignment(sub2IdStatValue, Alignment.MIDDLE_RIGHT);
+        Label sub2IdStatValue = new Label("" + overviewInfoBean.getNumberOfIdStudies());
+        sub2IdStatValue.addStyleName(ValoTheme.LABEL_SMALL);
+        sub2IdStatValue.addStyleName(ValoTheme.LABEL_TINY);
+        sub2IdStatValue.addStyleName("nomargin");
+        sub2IdStatValue.addStyleName("rightaligntext");
+        sub2IdStatValue.setWidth(60, Unit.PIXELS);
+        subIdStatLayout.addComponent(sub2IdStatValue, 1, 1);
+        subIdStatLayout.setComponentAlignment(sub2IdStatValue, Alignment.MIDDLE_RIGHT);
 
-            Label sub3IdStatLabel = new Label("#Proteins");
-            sub3IdStatLabel.addStyleName(ValoTheme.LABEL_SMALL);
-            sub3IdStatLabel.addStyleName(ValoTheme.LABEL_TINY);
-            sub3IdStatLabel.addStyleName("nomargin");
-            subIdStatLayout.addComponent(sub3IdStatLabel, 0, 2);
+        Label sub3IdStatLabel = new Label("#Proteins");
+        sub3IdStatLabel.addStyleName(ValoTheme.LABEL_SMALL);
+        sub3IdStatLabel.addStyleName(ValoTheme.LABEL_TINY);
+        sub3IdStatLabel.addStyleName("nomargin");
+        subIdStatLayout.addComponent(sub3IdStatLabel, 0, 2);
 
-            Label sub3IdStatValue = new Label("" + overviewInfoBean.getNumberOfIdProteins());
-            sub3IdStatValue.addStyleName(ValoTheme.LABEL_SMALL);
-            sub3IdStatValue.addStyleName(ValoTheme.LABEL_TINY);
-            sub3IdStatValue.addStyleName("nomargin");
-            sub3IdStatValue.addStyleName("rightaligntext");
-            sub3IdStatValue.setWidth(60, Unit.PIXELS);
-            subIdStatLayout.addComponent(sub3IdStatValue, 1, 2);
-            subIdStatLayout.setComponentAlignment(sub3IdStatValue, Alignment.MIDDLE_RIGHT);
+        Label sub3IdStatValue = new Label("" + overviewInfoBean.getNumberOfIdProteins());
+        sub3IdStatValue.addStyleName(ValoTheme.LABEL_SMALL);
+        sub3IdStatValue.addStyleName(ValoTheme.LABEL_TINY);
+        sub3IdStatValue.addStyleName("nomargin");
+        sub3IdStatValue.addStyleName("rightaligntext");
+        sub3IdStatValue.setWidth(60, Unit.PIXELS);
+        subIdStatLayout.addComponent(sub3IdStatValue, 1, 2);
+        subIdStatLayout.setComponentAlignment(sub3IdStatValue, Alignment.MIDDLE_RIGHT);
 
-            Label sub4IdStatLabel = new Label("#Peptides");
-            sub4IdStatLabel.addStyleName(ValoTheme.LABEL_SMALL);
-            sub4IdStatLabel.addStyleName(ValoTheme.LABEL_TINY);
-            sub4IdStatLabel.addStyleName("nomargin");
-            subIdStatLayout.addComponent(sub4IdStatLabel, 0, 3);
+        Label sub4IdStatLabel = new Label("#Peptides");
+        sub4IdStatLabel.addStyleName(ValoTheme.LABEL_SMALL);
+        sub4IdStatLabel.addStyleName(ValoTheme.LABEL_TINY);
+        sub4IdStatLabel.addStyleName("nomargin");
+        subIdStatLayout.addComponent(sub4IdStatLabel, 0, 3);
 
-            Label sub4IdStatValue = new Label("" + overviewInfoBean.getNumberOfIdPeptides());
-            sub4IdStatValue.addStyleName(ValoTheme.LABEL_SMALL);
-            sub4IdStatValue.addStyleName(ValoTheme.LABEL_TINY);
-            sub4IdStatValue.addStyleName("nomargin");
-            sub4IdStatValue.addStyleName("rightaligntext");
-            sub4IdStatValue.setWidth(60, Unit.PIXELS);
-            subIdStatLayout.addComponent(sub4IdStatValue, 1, 3);
-            subIdStatLayout.setComponentAlignment(sub4IdStatValue, Alignment.MIDDLE_RIGHT);
+        Label sub4IdStatValue = new Label("" + overviewInfoBean.getNumberOfIdPeptides());
+        sub4IdStatValue.addStyleName(ValoTheme.LABEL_SMALL);
+        sub4IdStatValue.addStyleName(ValoTheme.LABEL_TINY);
+        sub4IdStatValue.addStyleName("nomargin");
+        sub4IdStatValue.addStyleName("rightaligntext");
+        sub4IdStatValue.setWidth(60, Unit.PIXELS);
+        subIdStatLayout.addComponent(sub4IdStatValue, 1, 3);
+        subIdStatLayout.setComponentAlignment(sub4IdStatValue, Alignment.MIDDLE_RIGHT);
 
-            VerticalLayout relaseNoteInfo = updateRelaseNotesLayout();
-            PopupView relLabel = new PopupView("Release <font>" + relaseNoteInfo.getData() + "</font>", relaseNoteInfo);
-            relLabel.setCaptionAsHtml(true);
-            relLabel.setDescription("Click to open release notes");
-            relLabel.setHideOnMouseOut(false);
-            relLabel.setHeight(20, Unit.PIXELS);
-            relLabel.setWidth(100, Unit.PERCENTAGE);
-            relLabel.addStyleName("link");;
-            relLabel.addStyleName("lightlabel");
-            leftPanelWrapper.addComponent(relLabel);
+        VerticalLayout relaseNoteInfo = updateRelaseNotesLayout();
+        PopupView relLabel = new PopupView("Release <font>" + relaseNoteInfo.getData() + "</font>", relaseNoteInfo);
+        relLabel.setCaptionAsHtml(true);
+        relLabel.setDescription("Click to open release notes");
+        relLabel.setHideOnMouseOut(false);
+        relLabel.setHeight(20, Unit.PIXELS);
+        relLabel.setWidth(100, Unit.PERCENTAGE);
+        relLabel.addStyleName("link");;
+        relLabel.addStyleName("lightlabel");
+        leftPanelWrapper.addComponent(relLabel);
 
-            //init spacer
-            VerticalLayout spacer = new VerticalLayout();
-            spacer.setHeight(100, Unit.PERCENTAGE);
-            spacer.setWidth(10, Unit.PIXELS);
-            spacer.setStyleName("spacer");
-            mainBodyHLayout.addComponent(spacer);
+        //init spacer
+        VerticalLayout spacer = new VerticalLayout();
+        spacer.setHeight(100, Unit.PERCENTAGE);
+        spacer.setWidth(10, Unit.PIXELS);
+        spacer.setStyleName("spacer");
+        mainBodyHLayout.addComponent(spacer);
 
-            //end of spacer
-            //init rightlayout top
-            VerticalLayout rightPanelWrapper = new VerticalLayout();
-            rightPanelWrapper.setWidth(rightPanelWidth, Unit.PIXELS);
-            rightPanelWrapper.setHeightUndefined();
-            rightPanelWrapper.setStyleName("framelayout");
-            mainBodyHLayout.addComponent(rightPanelWrapper);
+        //end of spacer
+        //init rightlayout top
+        VerticalLayout rightPanelWrapper = new VerticalLayout();
+        rightPanelWrapper.setWidth(rightPanelWidth, Unit.PIXELS);
+        rightPanelWrapper.setHeightUndefined();
+        rightPanelWrapper.setStyleName("framelayout");
+        mainBodyHLayout.addComponent(rightPanelWrapper);
 
-            Label infoLable = new Label("Welcome to the CSF Proteome Resource (CSF-PR)");
-            infoLable.setStyleName(ValoTheme.LABEL_H3);
-            infoLable.addStyleName(ValoTheme.LABEL_BOLD);
-            rightPanelWrapper.addComponent(infoLable);
+        Label infoLable = new Label("Welcome to the CSF Proteome Resource (CSF-PR)");
+        infoLable.setStyleName(ValoTheme.LABEL_H3);
+        infoLable.addStyleName(ValoTheme.LABEL_BOLD);
+        rightPanelWrapper.addComponent(infoLable);
 
-            Label para_1 = new Label("CSF Proteome Resource "
-                    + "is an online repository of mass spectrometry" + breakline + "based proteomics "
-                    + "experiments on human cerebrospinal fluid (CSF)<br/>" + breakline
-            );
-            para_1.setContentMode(ContentMode.HTML);
-            rightPanelWrapper.addComponent(para_1);
-            para_1.setWidth(rightPanelWidth, Unit.PIXELS);
+        Label para_1 = new Label("CSF Proteome Resource "
+                + "is an online repository of mass spectrometry" + breakline + "based proteomics "
+                + "experiments on human cerebrospinal fluid (CSF)<br/>" + breakline
+        );
+        para_1.setContentMode(ContentMode.HTML);
+        rightPanelWrapper.addComponent(para_1);
+        para_1.setWidth(rightPanelWidth, Unit.PIXELS);
 
-            para_1.addStyleName(ValoTheme.LABEL_H4);
+        para_1.addStyleName(ValoTheme.LABEL_H4);
 
-            para_1.addStyleName("nomargin");
-            para_1.addStyleName("marginbottom");
-            para_1.addStyleName("linehight25");
+        para_1.addStyleName("nomargin");
+        para_1.addStyleName("marginbottom");
+        para_1.addStyleName("linehight25");
 
-            HorizontalLayout rightPanel = new HorizontalLayout();
-            rightPanel.setWidth(100, Unit.PERCENTAGE);
-            rightPanelWrapper.addComponent(rightPanel);
+        HorizontalLayout rightPanel = new HorizontalLayout();
+        rightPanel.setWidth(100, Unit.PERCENTAGE);
+        rightPanelWrapper.addComponent(rightPanel);
 
-            VerticalLayout middleLayout = new VerticalLayout();
-            middleLayout.setWidth(100, Unit.PERCENTAGE);
-            middleLayout.setHeightUndefined();
-            middleLayout.setMargin(false);
-            rightPanel.addComponent(middleLayout);
+        VerticalLayout middleLayout = new VerticalLayout();
+        middleLayout.setWidth(100, Unit.PERCENTAGE);
+        middleLayout.setHeightUndefined();
+        middleLayout.setMargin(false);
+        rightPanel.addComponent(middleLayout);
 
-            GridLayout middlePanelServicesLayout = new GridLayout(2, 2);
-            middlePanelServicesLayout.setSpacing(true);
+        GridLayout middlePanelServicesLayout = new GridLayout(2, 2);
+        middlePanelServicesLayout.setSpacing(true);
 
-            if (!smallScreen) {
-                middlePanelServicesLayout.setMargin(new MarginInfo(false, false, false, false));
-                middlePanelServicesLayout.setHeight(180, Unit.PIXELS);
-            } else {
-                middlePanelServicesLayout.setHeight(100, Unit.PIXELS);
+        if (!smallScreen) {
+            middlePanelServicesLayout.setMargin(new MarginInfo(false, false, false, false));
+            middlePanelServicesLayout.setHeight(180, Unit.PIXELS);
+        } else {
+            middlePanelServicesLayout.setHeight(100, Unit.PIXELS);
+        }
+        middleLayout.addComponent(middlePanelServicesLayout);
+
+        BigBtn quantDatasetBtn = new BigBtn("Quantification", "Browse quantitative data", "img/scatter_plot_applied.png") {
+
+            @Override
+            public void onClick() {
+                View_Manager.viewLayout("quantview");
             }
-            middleLayout.addComponent(middlePanelServicesLayout);
+        };
+        if (!smallScreen) {
+            quantDatasetBtn.addStyleName("padding12");
+            quantDatasetBtn.addStyleName("margintop10");
+        } else {
+            quantDatasetBtn.addStyleName("margintop5");
+        }
 
-            BigBtn quantDatasetBtn = new BigBtn("Quantification", "Browse quantitative data", "img/scatter_plot_applied.png") {
+        quantDatasetBtn.getThumbBtn().setDescription("Click to browse protein quantitative data");
+        middlePanelServicesLayout.addComponent(quantDatasetBtn, 0, 0);
+        middlePanelServicesLayout.setComponentAlignment(quantDatasetBtn, Alignment.TOP_LEFT);
+        BigBtn idDatasetBtn = new BigBtn("Identification", "Browse identification data", "img/bar-chart.png") {
 
-                @Override
-                public void onClick() {
-                    View_Manager.viewLayout("quantview");
-                }
-            };
-            if (!smallScreen) {
-                quantDatasetBtn.addStyleName("padding12");
-                quantDatasetBtn.addStyleName("margintop10");
-            } else {
-                quantDatasetBtn.addStyleName("margintop5");
+            @Override
+            public void onClick() {
+                Page.getCurrent().open(VaadinSession.getCurrent().getAttribute("csf_pr_Url").toString(), "_blank");//setLocation("http://129.177.231.63/csf-pr-v1.0");
+
+            }
+        };
+        if (!smallScreen) {
+            idDatasetBtn.addStyleName("padding12");
+            idDatasetBtn.addStyleName("margintop10");
+        } else {
+            idDatasetBtn.addStyleName("margintop5");
+        }
+        idDatasetBtn.getThumbBtn().setDescription("Click to browse protein identification data");
+
+        middlePanelServicesLayout.addComponent(idDatasetBtn, 0, 1);
+        middlePanelServicesLayout.setComponentAlignment(idDatasetBtn, Alignment.TOP_LEFT);
+
+        SearchingComponent searchingDatasetBtn = new SearchingComponent(Data_handler, CSFPR_Central_Manager) {
+
+            @Override
+            public void loadQuantSearching() {                
+                View_Manager.viewLayout("quantview");
+
             }
 
-            quantDatasetBtn.getThumbBtn().setDescription("Click to browse protein quantitative data");
-            middlePanelServicesLayout.addComponent(quantDatasetBtn, 0, 0);
-            middlePanelServicesLayout.setComponentAlignment(quantDatasetBtn, Alignment.TOP_LEFT);
-            BigBtn idDatasetBtn = new BigBtn("Identification", "Browse identification data", "img/bar-chart.png") {
+        };
+        if (!smallScreen) {
+            searchingDatasetBtn.addStyleName("padding12");
+            searchingDatasetBtn.addStyleName("margintop10");
+        } else {
+            searchingDatasetBtn.addStyleName("margintop5");
+        }
+        searchingDatasetBtn.getThumbBtn().setDescription("Click to search quantified and identified protein data");
+        middlePanelServicesLayout.addComponent(searchingDatasetBtn, 1, 0);
 
-                @Override
-                public void onClick() {
-                    Page.getCurrent().open(VaadinSession.getCurrent().getAttribute("csf_pr_Url").toString(), "_blank");//setLocation("http://129.177.231.63/csf-pr-v1.0");
+        CompareComponent compareBtn = new CompareComponent(Data_handler, CSFPR_Central_Manager) {
 
-                }
-            };
-            if (!smallScreen) {
-                idDatasetBtn.addStyleName("padding12");
-                idDatasetBtn.addStyleName("margintop10");
-            } else {
-                idDatasetBtn.addStyleName("margintop5");
+            @Override
+            public void loadQuantComparison() {               
+                View_Manager.viewLayout("quantview");
             }
-            idDatasetBtn.getThumbBtn().setDescription("Click to browse protein identification data");
 
-            middlePanelServicesLayout.addComponent(idDatasetBtn, 0, 1);
-            middlePanelServicesLayout.setComponentAlignment(idDatasetBtn, Alignment.TOP_LEFT);
-       
-            SearchingComponent searchingDatasetBtn = new SearchingComponent(Data_handler, CSFPR_Central_Manager) {
+        };
+        if (!smallScreen) {
+            compareBtn.addStyleName("padding12");
+            compareBtn.addStyleName("margintop10");
+        } else {
+            compareBtn.addStyleName("margintop5");
+        }
+        compareBtn.getThumbBtn().setDescription("Click to compare with your own protein quantification data");
+        middlePanelServicesLayout.addComponent(compareBtn, 1, 1);
+        middlePanelServicesLayout.setComponentAlignment(compareBtn, Alignment.TOP_LEFT);
 
-                @Override
-                public void loadQuantSearching() {
-                    View_Manager.viewLayout("quantview");
+        BigBtn homeBtn = new BigBtn("", "", "img/home-o.png") {
 
-                }
-
-            };
-            if (!smallScreen) {
-                searchingDatasetBtn.addStyleName("padding12");
-                searchingDatasetBtn.addStyleName("margintop10");
-            } else {
-                searchingDatasetBtn.addStyleName("margintop5");
+            @Override
+            public void onClick() {
+                View_Manager.viewLayout("welcomeview");
             }
-            searchingDatasetBtn.getThumbBtn().setDescription("Click to search quantified and identified protein data");
-            middlePanelServicesLayout.addComponent(searchingDatasetBtn, 1, 0);
+        };
+        this.addComponent(homeBtn);
+        homeBtn.setVisible(false);
+        homeBtn.getThumbBtn().setDescription("Home page");
 
-            CompareComponent compareBtn = new CompareComponent(Data_handler, CSFPR_Central_Manager) {
+        Label para_2 = new Label(breakline + "<p align='justify' Style='margin-bottom:2px;width:650px;text-align: justify;text-justify: inter-word;font-size: 12px;color: black;/* font-weight: bold; */line-height: 12px;'><font>Publications:</font></p><ul align='justify' Style='margin-bottom:2px;margin-top:2px;padding-left:20px;text-align: justify;text-justify: inter-word;font-size: 12px;color: black;/* font-weight: bold; */line-height: 20px;'><li style='width:650px !important'><a class='link' href='http://www.mcponline.org/content/16/2/300' target='_blank'>Guldbrandsen et al.: CSF-PR 2.0: an interactive literature guide to quantitative cerebrospinal fluid mass spectrometry data from neurodegenerative disorders. Mol Cell Proteomics. 2017 Feb;16(2):300-309.</font></li><li style='width:650px !important'><a class='link' href='http://www.mcponline.org/content/13/11/3152.full.pdf+html' target='_blank'>Guldbrandsen et al.: In-depth Characterization of the Cerebrospinal Fluid (CSF) Proteome Displayed Through the CSF Proteome Resource (CSF-PR). Mol Cell Proteomics. 2014 Nov;13(11):3152-63.</a></li></ul>");
+        para_2.setContentMode(ContentMode.HTML);
 
-                @Override
-                public void loadQuantComparison() {
-                    View_Manager.viewLayout("quantview");
-                }
+        middleLayout.addComponent(para_2);
+        middleLayout.setComponentAlignment(para_2, Alignment.TOP_LEFT);
 
-            };
-            if (!smallScreen) {
-                compareBtn.addStyleName("padding12");
-                compareBtn.addStyleName("margintop10");
-            } else {
-                compareBtn.addStyleName("margintop5");
-            }
-            compareBtn.getThumbBtn().setDescription("Click to compare with your own protein quantification data");
-            middlePanelServicesLayout.addComponent(compareBtn, 1, 1);
-            middlePanelServicesLayout.setComponentAlignment(compareBtn, Alignment.TOP_LEFT);
-
-            BigBtn homeBtn = new BigBtn("", "", "img/home-o.png") {
-
-                @Override
-                public void onClick() {
-                    View_Manager.viewLayout("welcomeview");
-                }
-            };
-            this.addComponent(homeBtn);
-            homeBtn.setVisible(false);
-            homeBtn.getThumbBtn().setDescription("Home page");
-
-            Label para_2 = new Label(breakline + "<p align='justify' Style='margin-bottom:2px;width:650px;text-align: justify;text-justify: inter-word;font-size: 12px;color: black;/* font-weight: bold; */line-height: 12px;'><font>Publications:</font></p><ul align='justify' Style='margin-bottom:2px;margin-top:2px;padding-left:20px;text-align: justify;text-justify: inter-word;font-size: 12px;color: black;/* font-weight: bold; */line-height: 20px;'><li style='width:650px !important'><a class='link' href='http://www.mcponline.org/content/16/2/300' target='_blank'>Guldbrandsen et al.: CSF-PR 2.0: an interactive literature guide to quantitative cerebrospinal fluid mass spectrometry data from neurodegenerative disorders. Mol Cell Proteomics. 2017 Feb;16(2):300-309.</font></li><li style='width:650px !important'><a class='link' href='http://www.mcponline.org/content/13/11/3152.full.pdf+html' target='_blank'>Guldbrandsen et al.: In-depth Characterization of the Cerebrospinal Fluid (CSF) Proteome Displayed Through the CSF Proteome Resource (CSF-PR). Mol Cell Proteomics. 2014 Nov;13(11):3152-63.</a></li></ul>");
-            para_2.setContentMode(ContentMode.HTML);
-
-            middleLayout.addComponent(para_2);
-            middleLayout.setComponentAlignment(para_2, Alignment.TOP_LEFT);
-        
         this.resetThumbBtn = new ImageContainerBtn() {
 
             @Override
@@ -542,14 +540,12 @@ public class WelcomeLayoutComponents extends VerticalLayout implements Serializa
 
         });
         footerLayout.addComponent(rightHeaderLayout, "left: 0px; top: " + 5 + "px");
-        
-        
-        
-           String requestSearching = VaadinService.getCurrentRequest().getPathInfo();
-        if (!requestSearching.trim().endsWith("/") &&requestSearching.contains("searchby:") &&requestSearching.contains("searchkey:") ) {
+
+        String requestSearching = VaadinService.getCurrentRequest().getPathInfo();
+        if (!requestSearching.trim().endsWith("/") && requestSearching.contains("searchby:") && requestSearching.contains("searchkey:")) {
             searchingDatasetBtn.excuteExternalQuery(requestSearching);
         }
-        
+
     }
 
     private VerticalLayout updateRelaseNotesLayout() {

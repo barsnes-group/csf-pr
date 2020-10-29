@@ -142,7 +142,6 @@ public class CSF_PR_UI extends UI {
         layout = new MainLayout(dbURL, dbName, dbDriver, dbUserName, dbPassword, windowWidth, windowHeight);
         appWrapper.addComponent(layout);
         appWrapper.setComponentAlignment(layout, Alignment.MIDDLE_CENTER);
-//        tracker.trackPageview("http://localhost:8084/CSF-PR-2.0-Touch/");
 
      
 

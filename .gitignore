@@ -1,1 +1,2 @@
-/csf-pr/target/
+target/
+.idea/

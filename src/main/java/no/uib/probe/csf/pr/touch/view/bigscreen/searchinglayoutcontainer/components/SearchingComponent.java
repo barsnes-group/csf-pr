@@ -286,7 +286,7 @@ public abstract class SearchingComponent extends BigBtn implements Serializable{
         resetBtn.setEnabled(true);
         rightBtnWrapper.addComponent(resetBtn);
         rightBtnWrapper.setComponentAlignment(resetBtn, Alignment.MIDDLE_RIGHT);
-        resetBtn.setDescription("Load data");
+        resetBtn.setDescription("Reset");
         resetBtn.addClickListener((Button.ClickEvent event) -> {
             resetSearch();
             searchingUnit.reset();
@@ -458,7 +458,7 @@ public abstract class SearchingComponent extends BigBtn implements Serializable{
                 if (!diseaseCategoriesIdMap.containsKey(protein.getDiseaseCategoryI())) {
                     diseaseCategoriesIdMap.put(protein.getDiseaseCategoryI(), new HashSet<>());
                 }
-                
+
                 if (!diseaseCategoriesIdMap.containsKey(protein.getDiseaseCategoryII())) {
                     diseaseCategoriesIdMap.put(protein.getDiseaseCategoryII(), new HashSet<>());
                 }
@@ -474,13 +474,13 @@ public abstract class SearchingComponent extends BigBtn implements Serializable{
         } else {
             selection.setKeyWords(proteinList.keySet());
             searchQuantificationProtList.stream().filter((protein) -> (proteinList.keySet().contains(protein.getFinalAccession()) && (proteinList.get(protein.getFinalAccession()).contains("all") || proteinList.get(protein.getFinalAccession()).contains(protein.getDiseaseCategoryI()))|| proteinList.get(protein.getFinalAccession()).contains(protein.getDiseaseCategoryII()))).forEach((protein) -> {
-
+                       
                 datasetIds.add(protein.getQuantDatasetIndex());
                 proteinAccession.add(protein.getFinalAccession());
                 if (!diseaseCategoriesIdMap.containsKey(protein.getDiseaseCategoryI())) {
                     diseaseCategoriesIdMap.put(protein.getDiseaseCategoryI(), new HashSet<>());
                 }
-                 if (!diseaseCategoriesIdMap.containsKey(protein.getDiseaseCategoryII())) {
+                if (!diseaseCategoriesIdMap.containsKey(protein.getDiseaseCategoryII())) {
                     diseaseCategoriesIdMap.put(protein.getDiseaseCategoryII(), new HashSet<>());
                 }
                 Set<Integer> datasetIdSet = diseaseCategoriesIdMap.get(protein.getDiseaseCategoryI());
@@ -497,9 +497,10 @@ public abstract class SearchingComponent extends BigBtn implements Serializable{
         selection.setDiseaseCategories(diseaseCategories);
         selection.setQuantDatasetIndexes(datasetIds);
         selection.setSelectedProteinsList(proteinAccession);
-        Data_handler.switchToSearchingMode(selection);
+        Data_handler.switchToSearchingMode(selection);        
         loadQuantSearching();
-        CSFPR_Central_Manager.searchSelectionAction(selection);
+        CSFPR_Central_Manager.searchSelectionAction(selection); 
+       
     }
 
     /**
@@ -564,7 +565,7 @@ public abstract class SearchingComponent extends BigBtn implements Serializable{
             idSearchingLink.setDescription("View protein id results in CSF-PR v1.0");
             idSearchingLink.setWidth(100, Unit.PERCENTAGE);
             idDataResult.addComponent(idSearchingLink);
-            
+
         } else {
             idDataResult.setVisible(false);
         }
@@ -658,7 +659,7 @@ public abstract class SearchingComponent extends BigBtn implements Serializable{
                     }
 
                 };
-                
+
                 chart.initializeFilterData(diseaseCategoryNames, quantHitsList.get(proteinName), diseaseCategoryColors);
                 chart.redrawChart();
                 chart.setData(proteinName.split("__")[0]);
@@ -706,6 +707,9 @@ public abstract class SearchingComponent extends BigBtn implements Serializable{
      */
     @Override
     public void onClick() {
+         if (CSFPR_Central_Manager.getQuantSearchSelection() != null && CSFPR_Central_Manager.getQuantSearchSelection().getUserCustomizedComparison() != null) {
+            CSFPR_Central_Manager.resetSearchSelection();
+        }
         searchingPanel.setVisible(true);
 
     }
