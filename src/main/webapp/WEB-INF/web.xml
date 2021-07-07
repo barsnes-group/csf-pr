@@ -40,7 +40,7 @@
     <context-param>
         <description>Database name</description>
         <param-name>dbName</param-name>
-        <param-value></param-value>
+        <param-value>csf_db_id_quant_2020</param-value>
     </context-param>
     <context-param>
         <description>Database Driver</description>
@@ -50,7 +50,7 @@
     <context-param>
         <description>Database Password </description>
         <param-name>password</param-name>
-        <param-value></param-value>
+        <param-value>qwe1212qwe1212</param-value>
     </context-param>
     <context-param>
         <description>Database Username</description>

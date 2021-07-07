@@ -126,6 +126,9 @@ public class CSFPR_Central_Manager implements Serializable {
      * @param listener listener component
      */
     public void registerListener(CSFListener listener) {
+        if (Listeners_Map.containsKey(listener.getListenerId())) {
+            Listeners_Map.remove(listener.getListenerId());
+        }
         Listeners_Map.put(listener.getListenerId(), listener);
 
     }

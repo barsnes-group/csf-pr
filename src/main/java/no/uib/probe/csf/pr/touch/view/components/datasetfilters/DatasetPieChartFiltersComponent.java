@@ -18,6 +18,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import jdk.nashorn.internal.ir.ContinueNode;
 import no.uib.probe.csf.pr.touch.logic.beans.QuantDataset;
 import no.uib.probe.csf.pr.touch.view.core.InformationButton;
 import no.uib.probe.csf.pr.touch.view.core.PopupWindowFrameWithFunctionsBtns;
@@ -298,25 +299,52 @@ public abstract class DatasetPieChartFiltersComponent extends VerticalLayout imp
             PieChartSlice shotgunTargetedSlice = shotgunTargetedMap.get(dataset.getShotgunTargeted());
             shotgunTargetedSlice.addDatasetId(dataset.getQuantDatasetIndex());
             shotgunTargetedMap.put(dataset.getShotgunTargeted(), shotgunTargetedSlice);
-        });
+        
+    }
 
-        filtersSet.get("yearFilter").initializeFilterData(yearMap);
-        fullFiltersData.put("yearFilter", yearMap);
+    );
 
-        filtersSet.get("studyTypeFilter").initializeFilterData(studyTypeMap);
-        fullFiltersData.put("studyTypeFilter", studyTypeMap);
+    filtersSet.get (
 
-        filtersSet.get("sampleMatchingFilter").initializeFilterData(sampleMatchingMap);
-        fullFiltersData.put("sampleMatchingFilter", sampleMatchingMap);
+    "yearFilter").initializeFilterData(yearMap);
+    fullFiltersData.put (
 
-        filtersSet.get("technologyFilter").initializeFilterData(technologyMap);
-        fullFiltersData.put("technologyFilter", technologyMap);
+    "yearFilter", yearMap);
 
-        filtersSet.get("analyticalApproachFilter").initializeFilterData(analyticalApproachMap);
-        fullFiltersData.put("analyticalApproachFilter", analyticalApproachMap);
+    filtersSet.get (
 
-        filtersSet.get("shotgunTargetedFilter").initializeFilterData(shotgunTargetedMap);
-        fullFiltersData.put("shotgunTargetedFilter", shotgunTargetedMap);
+    "studyTypeFilter").initializeFilterData(studyTypeMap);
+    fullFiltersData.put (
+
+    "studyTypeFilter", studyTypeMap);
+
+    filtersSet.get (
+
+    "sampleMatchingFilter").initializeFilterData(sampleMatchingMap);
+    fullFiltersData.put (
+
+    "sampleMatchingFilter", sampleMatchingMap);
+
+    filtersSet.get (
+
+    "technologyFilter").initializeFilterData(technologyMap);
+    fullFiltersData.put (
+
+    "technologyFilter", technologyMap);
+
+    filtersSet.get (
+
+    "analyticalApproachFilter").initializeFilterData(analyticalApproachMap);
+    fullFiltersData.put (
+
+    "analyticalApproachFilter", analyticalApproachMap);
+
+    filtersSet.get (
+
+    "shotgunTargetedFilter").initializeFilterData(shotgunTargetedMap);
+    fullFiltersData.put (
+
+"shotgunTargetedFilter", shotgunTargetedMap);
 
     }
 
@@ -333,7 +361,7 @@ public abstract class DatasetPieChartFiltersComponent extends VerticalLayout imp
     private DatasetPieChartFilter initPieChartFilter(String title, String filterId, int index, int width, int height) {
         DatasetPieChartFilter filter = new DatasetPieChartFilter(title, filterId, index, width, height) {
             @Override
-            public void selectDatasets(boolean noselection) {
+        public void selectDatasets(boolean noselection) {
                 Set<Integer> finalSelectionIds = filterSelectionUnit();
                 if (noselection) {
                     updateFilters(finalSelectionIds, "");
@@ -429,7 +457,7 @@ public abstract class DatasetPieChartFiltersComponent extends VerticalLayout imp
     public abstract Map<Integer, QuantDataset> updatedDatasets();
 
     @Override
-    public void layoutClick(LayoutEvents.LayoutClickEvent event) {
+        public void layoutClick(LayoutEvents.LayoutClickEvent event) {
         this.updateQuantDatasetMap(this.updatedDatasets());
 
         popupWindow.view();

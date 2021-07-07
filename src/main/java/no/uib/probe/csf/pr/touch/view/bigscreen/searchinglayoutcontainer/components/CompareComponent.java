@@ -494,6 +494,7 @@ public abstract class CompareComponent extends BigBtn {
             idSearchingLink.addStyleName("smalllink");
             idSearchingLink.setDescription("View protein id results in CSF-PR v1.0");
             idSearchingLink.setWidth(100, Unit.PERCENTAGE);
+            idDataResult.removeAllComponents();
             idDataResult.addComponent(idSearchingLink);
 
         } else {
@@ -600,7 +601,7 @@ public abstract class CompareComponent extends BigBtn {
      * On click view the comparison panel.
      */
     @Override
-    public void onClick() {
+    public void onClick() {      
         comparePanel.setVisible(true);
 
     }
