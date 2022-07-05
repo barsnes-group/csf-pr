@@ -12,10 +12,12 @@ import com.vaadin.server.VaadinSession;
 import com.vaadin.shared.ui.window.WindowMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
+import java.sql.SQLException;
 import javax.servlet.ServletContext;
 import no.uib.probe.csf.pr.touch.view.MainLayout;
 import org.vaadin.googleanalytics.tracking.GoogleAnalyticsTracker;
@@ -138,12 +140,13 @@ public class CSF_PR_UI extends UI {
         appWrapper.addStyleName("scrollable");
 
         setContent(appWrapper);
-
-        layout = new MainLayout(dbURL, dbName, dbDriver, dbUserName, dbPassword, windowWidth, windowHeight);
-        appWrapper.addComponent(layout);
-        appWrapper.setComponentAlignment(layout, Alignment.MIDDLE_CENTER);
-
-     
+        try {
+            layout = new MainLayout(dbURL, dbName, dbDriver, dbUserName, dbPassword, windowWidth, windowHeight);
+            appWrapper.addComponent(layout);
+            appWrapper.setComponentAlignment(layout, Alignment.MIDDLE_CENTER);
+        } catch (Exception e) {
+            Notification.show("Error connecting to database", Notification.Type.ERROR_MESSAGE);
+        }
 
     }
 
