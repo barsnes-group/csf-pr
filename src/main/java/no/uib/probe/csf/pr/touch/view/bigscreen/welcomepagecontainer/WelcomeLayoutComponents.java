@@ -20,9 +20,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import no.uib.probe.csf.pr.touch.Data_Handler;
 import no.uib.probe.csf.pr.touch.logic.beans.QuantDataset;
@@ -84,7 +84,7 @@ public class WelcomeLayoutComponents extends VerticalLayout implements Serializa
      * @param dsObjects list of dataset information
      * @param bodyWidth current screen with
      */
-    public WelcomeLayoutComponents(final Data_Handler Data_handler, CSFPR_Central_Manager CSFPR_Central_Manager, final LayoutViewManager View_Manager, int bodyWidth, int bodyHeight, OverviewInfoBean overviewInfoBean, List<Object[]> publicationList, Set<QuantDataset> dsObjects) {
+    public WelcomeLayoutComponents(final Data_Handler Data_handler, CSFPR_Central_Manager CSFPR_Central_Manager, final LayoutViewManager View_Manager, int bodyWidth, int bodyHeight, OverviewInfoBean overviewInfoBean, Map<String,Object[]> publicationList, Set<QuantDataset> dsObjects) {
 
         this.setWidth(980, Unit.PIXELS);
         this.setHeight(100, Unit.PERCENTAGE);
@@ -153,7 +153,7 @@ public class WelcomeLayoutComponents extends VerticalLayout implements Serializa
         DatasetInformationWindow sub2quantStatLabelWrapper = new DatasetInformationWindow(publicationList) {
 
             @Override
-            public List<Object[]> getPublicationsInformation(Set<String> pumedId) {
+            public Map<String,Object[]> getPublicationsInformation(Set<String> pumedId) {
                 return publicationList;
             }
 

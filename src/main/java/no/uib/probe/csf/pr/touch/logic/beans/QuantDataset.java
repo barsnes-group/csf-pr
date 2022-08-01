@@ -253,19 +253,19 @@ public class QuantDataset implements Serializable, Comparable {
      *
      * @return identifiedProteinsNumber Dataset identified proteins number
      */
-    public int getIdentifiedProteinsNumber() {
-        return Math.max((Integer) values[2], 0);
-    }
+//    public int getIdentifiedProteinsNumber() {
+//        return Math.max((Integer) values[2], 0);
+//    }
 
-    /**
-     * Set dataset identified proteins number
-     *
-     * @param identifiedProteinsNumber Dataset identified proteins number
-     */
-    public void setIdentifiedProteinsNumber(int identifiedProteinsNumber) {
-        values[2] = identifiedProteinsNumber;
-        valuesMap.put("identifiedProteinsNumber", identifiedProteinsNumber);
-    }
+//    /**
+//     * Set dataset identified proteins number
+//     *
+//     * @param identifiedProteinsNumber Dataset identified proteins number
+//     */
+//    public void setIdentifiedProteinsNumber(int identifiedProteinsNumber) {
+//        values[2] = identifiedProteinsNumber;
+//        valuesMap.put("identifiedProteinsNumber", identifiedProteinsNumber);
+//    }
 
     /**
      * Set dataset quantified proteins number
@@ -476,26 +476,26 @@ public class QuantDataset implements Serializable, Comparable {
         valuesMap.put("quantificationBasis", quantificationBasis);
     }
 
-    /**
-     * Get quantification basis comments (protein level) the quant bases
-     * comments are different in protein and peptides level
-     *
-     * @return quantBasisComment Quantification basis comments
-     */
-    public String getQuantBasisComment() {
-        return values[15].toString();
-    }
-
-    /**
-     * Set quantification basis comments (protein level) the quant bases
-     * comments are different in protein and peptides level
-     *
-     * @param quantBasisComment Quantification basis comments
-     */
-    public void setQuantBasisComment(String quantBasisComment) {
-        values[15] = quantBasisComment;
-        valuesMap.put("quantBasisComment", quantBasisComment);
-    }
+//    /**
+//     * Get quantification basis comments (protein level) the quant bases
+//     * comments are different in protein and peptides level
+//     *
+//     * @return quantBasisComment Quantification basis comments
+//     */
+//    public String getQuantBasisComment() {
+//        return values[15].toString();
+//    }
+//
+//    /**
+//     * Set quantification basis comments (protein level) the quant bases
+//     * comments are different in protein and peptides level
+//     *
+//     * @param quantBasisComment Quantification basis comments
+//     */
+//    public void setQuantBasisComment(String quantBasisComment) {
+//        values[15] = quantBasisComment;
+//        valuesMap.put("quantBasisComment", quantBasisComment);
+//    }
 
     /**
      * Get normalization strategy

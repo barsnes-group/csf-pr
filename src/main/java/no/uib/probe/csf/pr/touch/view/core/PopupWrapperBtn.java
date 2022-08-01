@@ -2,7 +2,6 @@ package no.uib.probe.csf.pr.touch.view.core;
 
 import com.vaadin.event.LayoutEvents;
 import com.vaadin.server.Page;
-import com.vaadin.server.VaadinSession;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Label;
@@ -56,10 +55,9 @@ public class PopupWrapperBtn extends VerticalLayout implements LayoutEvents.Layo
      * Constructor to initialize the main attributes for publication button.
      *
      * @param btnName The caption of the button.
-     * @param publicationAuthor The author of the publication name.
-     * @param publicationData Array of objects contain publication data.
+     * @param pubmedId The author of the publication name.
      */
-    public PopupWrapperBtn(String btnName, String publicationAuthor, Object[] publicationData) {
+    public PopupWrapperBtn(String btnName, String pubmedId) {
         this.addLayoutClickListener(PopupWrapperBtn.this);
         this.setDescription("Click to view publication information");
         this.setHeight(80, Unit.PIXELS);
@@ -72,13 +70,8 @@ public class PopupWrapperBtn extends VerticalLayout implements LayoutEvents.Layo
         this.addStyleName("margintop");
         this.addStyleName("marginbottom");
 
-//        VerticalLayout infoLayout = initPublicationLayout(publicationData);
-        this.pubmidID = publicationData[0].toString();
-
-        popupPanel = null;//new PopupWindowFrame(publicationAuthor, new VerticalLayout(infoLayout));
-//        popupPanel.setFrameWidth(600);
-//        popupPanel.setFrameHeight(409);
-
+        this.pubmidID = pubmedId;
+        popupPanel = null;
         this.setExpandRatio(btnLabel, 0.99f);
 
     }

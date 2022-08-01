@@ -48,8 +48,8 @@ public class QuantDatasetsfullStudiesTableLayout extends Table {
         this.setColumnCollapsed("Author", false);
         this.addContainerProperty("Year", String.class, null, "Year", null, Table.Align.CENTER);
         this.setColumnCollapsed("Year", false);
-        this.addContainerProperty("#Identified Proteins", Integer.class, null, "#Identified Proteins", null, Table.Align.RIGHT);
-        this.setColumnCollapsed("#Identified Proteins", !activeColumnHeaders[2]);
+//        this.addContainerProperty("#Identified Proteins", Integer.class, null, "#Identified Proteins", null, Table.Align.RIGHT);
+//        this.setColumnCollapsed("#Identified Proteins", !activeColumnHeaders[2]);
         this.addContainerProperty("#Quantified Proteins", Integer.class, null, "#Quantified Proteins", null, Table.Align.RIGHT);
         this.setColumnCollapsed("#Quantified Proteins", !activeColumnHeaders[3]);
 
@@ -82,8 +82,8 @@ public class QuantDatasetsfullStudiesTableLayout extends Table {
         this.addContainerProperty("quantificationBasis", String.class, null, "Quant Basis", null, Table.Align.LEFT);
         this.setColumnCollapsed("quantificationBasis", !activeColumnHeaders[14]);
 
-        this.addContainerProperty("quantBasisComment", String.class, null, "Quant Basis Comment", null, Table.Align.LEFT);
-        this.setColumnCollapsed("quantBasisComment", !activeColumnHeaders[15]);
+//        this.addContainerProperty("quantBasisComment", String.class, null, "Quant Basis Comment", null, Table.Align.LEFT);
+//        this.setColumnCollapsed("quantBasisComment", !activeColumnHeaders[15]);
 
         this.addContainerProperty("normalization_strategy", String.class, null, "Normalization Strategy", null, Table.Align.LEFT);
         this.setColumnCollapsed("normalization_strategy", !activeColumnHeaders[16]);
@@ -157,13 +157,13 @@ public class QuantDatasetsfullStudiesTableLayout extends Table {
             if (patGr2Num == -1) {
                 patGr2Num = null;
             }
-            Integer idNumber = pb.getIdentifiedProteinsNumber();
-            if (idNumber == -1) {
-                idNumber = null;
-            }
+//            Integer idNumber = pb.getIdentifiedProteinsNumber();
+//            if (idNumber == -1) {
+//                idNumber = null;
+//            }
 
             String pumedID = pb.getPubMedId();
-            this.addItem(new Object[]{index, pb.getAuthor(), pb.getYear() + "", idNumber, quantProtNum, pb.getAnalyticalMethod(), rawDatalink, pb.getTypeOfStudy(), pb.getSampleType(), pb.getSampleMatching(), pb.getShotgunTargeted(), pb.getTechnology(), pb.getAnalyticalApproach(), pb.getEnzyme(), pb.getQuantificationBasis(), pb.getQuantBasisComment(), pb.getNormalizationStrategy(), pumedID, pb.getDiseaseCategoryI(), pb.getDiseaseSubGroup1().split("\n")[0], patGr1Num, pb.getDiseaseMainGroup1Comm(), pb.getDiseaseCategoryII(), pb.getDiseaseSubGroup2().split("\n")[0],patGr2Num, pb.getDiseaseMainGroup2Comm(), pb.getAdditionalcomments()}, index);
+            this.addItem(new Object[]{index, pb.getAuthor(), pb.getYear() + "", "", quantProtNum, pb.getAnalyticalMethod(), rawDatalink, pb.getTypeOfStudy(), pb.getSampleType(), pb.getSampleMatching(), pb.getShotgunTargeted(), pb.getTechnology(), pb.getAnalyticalApproach(), pb.getEnzyme(), pb.getQuantificationBasis(), "", pb.getNormalizationStrategy(), pumedID, pb.getDiseaseCategoryI(), pb.getDiseaseSubGroup1().split("\n")[0], patGr1Num, pb.getDiseaseMainGroup1Comm(), pb.getDiseaseCategoryII(), pb.getDiseaseSubGroup2().split("\n")[0],patGr2Num, pb.getDiseaseMainGroup2Comm(), pb.getAdditionalcomments()}, index);
             dsIndexes[index] = pb.getQuantDatasetIndex();
             index++;
         }

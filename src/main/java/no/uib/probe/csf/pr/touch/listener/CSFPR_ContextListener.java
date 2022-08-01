@@ -101,7 +101,7 @@ public class CSFPR_ContextListener implements ServletContextListener {
             }
             rs.close();
 
-            String selectquantProtQueryString = "SELECT  `uniprot_accession` FROM `quantitative_proteins_table` GROUP BY `uniprot_accession` ORDER BY `uniprot_accession`"; //SELECT `uniprot_accession` FROM `quantitative_proteins_table` where `string_p_value` = 'Significant' GROUP BY `uniprot_accession` ORDER BY `uniprot_accession`
+            String selectquantProtQueryString = "SELECT  `uniprot_accession` FROM `quant_proteins_table` GROUP BY `uniprot_accession` ORDER BY `uniprot_accession`"; //SELECT `uniprot_accession` FROM `quantitative_proteins_table` where `string_p_value` = 'Significant' GROUP BY `uniprot_accession` ORDER BY `uniprot_accession`
 
             PreparedStatement selectQuantProtQuery = conn.prepareStatement(selectquantProtQueryString);
             rs = selectQuantProtQuery.executeQuery();

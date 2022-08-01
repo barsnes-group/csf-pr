@@ -925,7 +925,7 @@ public class DatasetUtility implements Serializable {
         DiseaseCategoryObject diseaseCategoryObject = searchCompareDiseaseCategoryMap.get("All Diseases");
         diseaseCategoryObject.setDatasetNumber(0);
         diseaseCategoryObject.setDiseaseSubGroups(inUse_DiseaseCat_DiseaseGroupMap.get(diseaseCategoryObject.getDiseaseCategory()));
-            diseaseCategoryObject.setDiseaseSubGroupsToFullName(diseaseGroupFullNameMap);
+        diseaseCategoryObject.setDiseaseSubGroupsToFullName(diseaseGroupFullNameMap);
         activeDiseaseCategoryMap.put(diseaseCategoryObject.getDiseaseCategory(), diseaseCategoryObject);
 
         QuantData refData = quantDataMap.get("All Diseases");

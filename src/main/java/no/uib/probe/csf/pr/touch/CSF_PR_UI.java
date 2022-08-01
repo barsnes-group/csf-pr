@@ -17,7 +17,6 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
-import java.sql.SQLException;
 import javax.servlet.ServletContext;
 import no.uib.probe.csf.pr.touch.view.MainLayout;
 import org.vaadin.googleanalytics.tracking.GoogleAnalyticsTracker;
@@ -145,7 +144,8 @@ public class CSF_PR_UI extends UI {
             appWrapper.addComponent(layout);
             appWrapper.setComponentAlignment(layout, Alignment.MIDDLE_CENTER);
         } catch (Exception e) {
-            Notification.show("Error connecting to database", Notification.Type.ERROR_MESSAGE);
+            e.printStackTrace();
+            Notification.show("The database is not available at the moment, try again later", Notification.Type.WARNING_MESSAGE);
         }
 
     }

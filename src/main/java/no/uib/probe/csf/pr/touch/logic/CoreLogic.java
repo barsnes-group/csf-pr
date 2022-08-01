@@ -70,7 +70,7 @@ public class CoreLogic implements Serializable {
      *
      * @return list of publications available in the the resource
      */
-    public List<Object[]> getPublicationList() {
+    public Map<String,Object[]> getPublicationList() {
 
         return database.getPublicationList();
 
@@ -285,7 +285,7 @@ public class CoreLogic implements Serializable {
                 String protAcc = quant.getUniprotAccessionNumber();
                 String url;
                 if (protAcc.equalsIgnoreCase("")) {
-                    System.out.println("********************* null acc " + protAcc + "  " + quant.getPublicationAccessionNumber() + "  " + comparProtList.containsKey(quant.getPublicationAccessionNumber()));
+                   System.out.println("********************* null acc " + protAcc + "  " + quant.getPublicationAccessionNumber() + "  " + comparProtList.containsKey(quant.getPublicationAccessionNumber()));
                 }
 
                 if (protAcc.trim().equalsIgnoreCase("") || protAcc.equalsIgnoreCase("Not Available") || protAcc.equalsIgnoreCase("Entry Deleted") || protAcc.equalsIgnoreCase("Entry Demerged") || protAcc.equalsIgnoreCase("NOT RETRIEVED") || protAcc.equalsIgnoreCase("DELETED") || protAcc.trim().equalsIgnoreCase("UNREVIEWED")) {

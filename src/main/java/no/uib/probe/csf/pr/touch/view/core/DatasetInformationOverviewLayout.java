@@ -24,23 +24,23 @@ public class DatasetInformationOverviewLayout extends VerticalLayout {
     /**
      * Quantification basis comments field.
      */
-    private InformationField quantBasisComment;
+//    private InformationField quantBasisComment;
     /**
      * Number of proteins found only in the dataset.
      */
-    private InformationField uniqueProtNumField;
+//    private InformationField uniqueProtNumField;
     /**
      * Number of peptides found only in the dataset.
      */
-    private InformationField uQuantPeptidesNum;
+//    private InformationField uQuantPeptidesNum;
     /**
      * Number of quantified proteins in the dataset .
      */
-    private InformationField quantProteinsNum;
+//    private InformationField quantProteinsNum;
     /**
      * Number of quantified peptides in the dataset.
      */
-    private InformationField quantPeptidesNum;
+//    private InformationField quantPeptidesNum;
     /**
      * Disease category (MS,AD,PD...etc)field.
      */
@@ -223,12 +223,20 @@ public class DatasetInformationOverviewLayout extends VerticalLayout {
         quantificationBasis = new InformationField("Quantification Basis");
         rowIII.addComponent(quantificationBasis);
         rowIII.setExpandRatio(quantificationBasis, 0.15f);
-        quantBasisComment = new InformationField("Quantification Basis Comment");
-        rowIII.addComponent(quantBasisComment);
-        rowIII.setExpandRatio(quantBasisComment, 0.35f);
-        identifiedProteinsNumber = new InformationField("#Identified Proteins");
-        rowIII.addComponent(identifiedProteinsNumber);
-        rowIII.setExpandRatio(identifiedProteinsNumber, 0.15f);
+//        quantBasisComment = new InformationField("Quantification Basis Comment");
+//        rowIII.addComponent(quantBasisComment);
+//        rowIII.setExpandRatio(quantBasisComment, 0.35f);
+//        identifiedProteinsNumber = new InformationField("#Identified Proteins");
+//        rowIII.addComponent(identifiedProteinsNumber);
+//        rowIII.setExpandRatio(identifiedProteinsNumber, 0.15f);
+
+        sampleMatching = new InformationField("Sample Matching");
+        rowIII.addComponent(sampleMatching);
+        rowIII.setExpandRatio(sampleMatching, 0.35f);
+        rawData = new InformationField("Raw Data");
+        rowIII.addComponent(rawData);
+        rowIII.setExpandRatio(rawData, 0.15f);
+
         quantifiedProteinsNumber = new InformationField("#Quantified Proteins");
         rowIII.addComponent(quantifiedProteinsNumber);
         rowIII.setExpandRatio(quantifiedProteinsNumber, 0.35f);
@@ -281,36 +289,36 @@ public class DatasetInformationOverviewLayout extends VerticalLayout {
         rowVI.setHeight(h, Unit.PIXELS);
         mainContainer.addComponent(rowVI);
 
-        sampleMatching = new InformationField("Sample Matching");
-        rowVI.addComponent(sampleMatching);
-        rowVI.setExpandRatio(sampleMatching, 0.15f);
-        normalization_strategy = new InformationField("Normalization Strategy");
-        rowVI.addComponent(normalization_strategy);
-        rowVI.setExpandRatio(normalization_strategy, 0.35f);
-        rawData = new InformationField("Raw Data");
-        rowVI.addComponent(rawData);
-        rowVI.setExpandRatio(rawData, 0.15f);
         diseaseCategory = new InformationField("Disease Category");
         rowVI.addComponent(diseaseCategory);
          rowVI.setComponentAlignment(diseaseCategory,Alignment.TOP_RIGHT);
-        rowVI.setExpandRatio(diseaseCategory, 0.35f);
-        diseaseCategory.setMargin(new MarginInfo(false, false, false, true));
+        rowVI.setExpandRatio(diseaseCategory, 0.15f);
+        normalization_strategy = new InformationField("Normalization Strategy");
+        rowVI.addComponent(normalization_strategy);
+        rowVI.setExpandRatio(normalization_strategy, 0.35f);
         
-        HorizontalLayout rowVII = new HorizontalLayout();
-        rowVII.setWidth(100, Unit.PERCENTAGE);
-        rowVII.setHeight(h, Unit.PIXELS);
-        quantProteinsNum = new InformationField("#Proteins");
-        rowVII.addComponent(quantProteinsNum);
-//        mainContainer.addComponent(rowVII);
-
-        quantPeptidesNum = new InformationField("#Peptides");
-        rowVII.addComponent(quantPeptidesNum);
-
-        uniqueProtNumField = new InformationField("#Dataset Specific Proteins");
-        rowVII.addComponent(uniqueProtNumField);
-
-        uQuantPeptidesNum = new InformationField("#Dataset Specific Peptides");
-        rowVII.addComponent(uQuantPeptidesNum);
+        InformationField empty = new InformationField("");
+        rowVI.addComponent(empty);
+        rowVI.setExpandRatio(empty, 0.15f);
+       InformationField empty2 = new InformationField("");
+        rowVI.addComponent(empty2);
+        rowVI.setExpandRatio(empty2, 0.35f);
+        
+//        HorizontalLayout rowVII = new HorizontalLayout();
+//        rowVII.setWidth(100, Unit.PERCENTAGE);
+//        rowVII.setHeight(h, Unit.PIXELS);
+//        quantProteinsNum = new InformationField("#Proteins");
+//        rowVII.addComponent(quantProteinsNum);
+////        mainContainer.addComponent(rowVII);
+//
+//        quantPeptidesNum = new InformationField("#Peptides");
+//        rowVII.addComponent(quantPeptidesNum);
+//
+//        uniqueProtNumField = new InformationField("#Dataset Specific Proteins");
+//        rowVII.addComponent(uniqueProtNumField);
+//
+//        uQuantPeptidesNum = new InformationField("#Dataset Specific Peptides");
+//        rowVII.addComponent(uQuantPeptidesNum);
         return mainContainer;
     }
 
@@ -324,10 +332,10 @@ public class DatasetInformationOverviewLayout extends VerticalLayout {
             return;
         }
         pubMedIdField.setValue(quantDs.getPubMedId(), "http://www.ncbi.nlm.nih.gov/pubmed/" + quantDs.getPubMedId());
-        if (quantDs.getRawDataUrl() == null || quantDs.getRawDataUrl().equalsIgnoreCase("Raw Data Not Available")) {
+        if (quantDs.getRawDataUrl().equalsIgnoreCase("false")) {
             rawData.setValue("Not Available", null);
         } else {
-            rawData.setValue(quantDs.getRawDataUrl(), null);
+            rawData.setValue("Available", null);
         }
         analyticalMethod.setValue(quantDs.getAnalyticalMethod(), null);
         typeOfStudy.setValue(quantDs.getTypeOfStudy(), null);
@@ -349,11 +357,11 @@ public class DatasetInformationOverviewLayout extends VerticalLayout {
         patientssubGroup2.setValue(quantDs.getDiseaseSubGroup2(), null);
         patientsCommGroup2.setValue(quantDs.getDiseaseMainGroup2Comm(), null);
 
-        identifiedProteinsNumber.setValue(quantDs.getIdentifiedProteinsNumber() + "", null);
+//        identifiedProteinsNumber.setValue(quantDs.getIdentifiedProteinsNumber() + "", null);
         quantifiedProteinsNumber.setValue(quantDs.getQuantifiedProteinsNumber() + "", null);
 
         sampleMatching.setValue(quantDs.getSampleMatching() + "", null);
-        quantBasisComment.setValue(quantDs.getQuantBasisComment() + "", null);
+//        quantBasisComment.setValue(quantDs.getQuantBasisComment() + "", null);
         analyticalApproach.setValue(quantDs.getAnalyticalApproach() + "", null);
         normalization_strategy.setValue(quantDs.getNormalizationStrategy(), null);
 
@@ -361,10 +369,10 @@ public class DatasetInformationOverviewLayout extends VerticalLayout {
 
         quantifiedProteinsNumber.setValue("" + quantDs.getQuantifiedProteinsNumber(), null);
 
-        quantPeptidesNum.setValue("" + quantDs.getTotalPepNum() + "", null);
-        quantProteinsNum.setValue("" + quantDs.getTotalProtNum() + "", null);
-        uQuantPeptidesNum.setValue(quantDs.getUniqePepNum(), null);
-        uniqueProtNumField.setValue(quantDs.getUniqueProtNum(), null);
+//        quantPeptidesNum.setValue("" + quantDs.getTotalPepNum() + "", null);
+//        quantProteinsNum.setValue("" + quantDs.getTotalProtNum() + "", null);
+//        uQuantPeptidesNum.setValue(quantDs.getUniqePepNum(), null);
+//        uniqueProtNumField.setValue(quantDs.getUniqueProtNum(), null);
         this.datasetInfoForm.setVisible(true);
     }
 

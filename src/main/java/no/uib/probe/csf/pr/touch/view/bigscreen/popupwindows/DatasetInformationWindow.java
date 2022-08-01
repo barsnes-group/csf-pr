@@ -8,6 +8,7 @@ import com.vaadin.ui.themes.ValoTheme;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import no.uib.probe.csf.pr.touch.logic.beans.QuantDataset;
 import no.uib.probe.csf.pr.touch.view.core.DatasetButtonsContainerLayout;
@@ -34,7 +35,7 @@ public abstract class DatasetInformationWindow extends VerticalLayout implements
      * List of arrays of objects, every array contains one publication
      * information .
      */
-    private List<Object[]> publicationList;
+    private Map<String,Object[]> publicationList;
     /**
      * Main tab-sheet that has 2 tabs one for dataset and one for publication.
      */
@@ -53,7 +54,7 @@ public abstract class DatasetInformationWindow extends VerticalLayout implements
      *
      * @param publicationList List of publication object arrays.
      */
-    public DatasetInformationWindow(List<Object[]> publicationList) {
+    public DatasetInformationWindow(Map<String,Object[]> publicationList) {
 
         popupBody = new VerticalLayout();
         popupWindowFrame = new PopupWindowFrame("Datasets and Publications", popupBody);
@@ -122,7 +123,7 @@ public abstract class DatasetInformationWindow extends VerticalLayout implements
      * @param pumedIdSet Set of publication PubMed id
      * @return publicationList List of Publication information object arrays
      */
-    public abstract List<Object[]> getPublicationsInformation(Set<String> pumedIdSet);
+    public abstract Map<String,Object[]>  getPublicationsInformation(Set<String> pumedIdSet);
 
     /**
      * View/hide the dataset individual buttons window.

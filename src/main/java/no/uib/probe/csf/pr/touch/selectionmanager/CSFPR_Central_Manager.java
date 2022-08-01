@@ -54,7 +54,7 @@ public class CSFPR_Central_Manager implements Serializable {
      * List of full publication information that is used by the resource
      * overview and in publication information overview.
      */
-    private List<Object[]> fullPublicationList;
+    private Map<String,Object[]>  fullPublicationList;
     /**
      * Main selected protein trend based on user customized data to show the
      * selected user protein trend in the peptide component.
@@ -84,7 +84,7 @@ public class CSFPR_Central_Manager implements Serializable {
      * @return fullPublicationList List of full object arrays for publication
      * information
      */
-    public List<Object[]> getFullPublicationList() {
+    public Map<String,Object[]>  getFullPublicationList() {
         return fullPublicationList;
     }
 
@@ -96,7 +96,7 @@ public class CSFPR_Central_Manager implements Serializable {
      * @param fullPublicationList List of full object arrays for publication
      * information
      */
-    public void setFullPublicationList(List<Object[]> fullPublicationList) {
+    public void setFullPublicationList(Map<String,Object[]>  fullPublicationList) {
         this.fullPublicationList = fullPublicationList;
     }
 

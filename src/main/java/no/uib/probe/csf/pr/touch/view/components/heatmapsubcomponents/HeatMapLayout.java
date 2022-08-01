@@ -213,7 +213,7 @@ public abstract class HeatMapLayout extends VerticalLayout {
      * filters
      * @param fullPublicationList List of publication objects array
      */
-    public HeatMapLayout(int heatMapContainerWidth, int availableHMHeight, boolean[] activeColumnHeaders, HeatmapFiltersContainerResizeControl filterResizeController, List<Object[]> fullPublicationList) {
+    public HeatMapLayout(int heatMapContainerWidth, int availableHMHeight, boolean[] activeColumnHeaders, HeatmapFiltersContainerResizeControl filterResizeController, Map<String, Object[]> fullPublicationList) {
         this.filterResizeController = filterResizeController;
         this.availableQuantDiseaseGroupsComparisonList = new LinkedHashSet<>();
         this.updatedDatasetMap = new LinkedHashMap<>();
@@ -283,12 +283,11 @@ public abstract class HeatMapLayout extends VerticalLayout {
         final DatasetInformationBtn showStudiesBtn = new DatasetInformationBtn() {
 
             @Override
-            public List<Object[]> updatePublicationsData(Set<String> pumedId) {
-                List<Object[]> updatedList = new ArrayList<>();
-                fullPublicationList.stream().filter((objArr) -> (pumedId.contains(objArr[0].toString()))).forEachOrdered((objArr) -> {
-                    updatedList.add(objArr);
+            public Map<String, Object[]> updatePublicationsData(Set<String> pumedId) {
+                Map<String, Object[]> updatedList = new LinkedHashMap<>();
+                fullPublicationList.keySet().stream().filter(key -> (pumedId.contains(key))).forEachOrdered(key -> {
+                    updatedList.put(key, fullPublicationList.get(key));
                 });
-
                 return updatedList;
             }
 
@@ -296,13 +295,13 @@ public abstract class HeatMapLayout extends VerticalLayout {
         heatmapToolsContainer.addComponent(showStudiesBtn);
         heatmapToolsContainer.setComponentAlignment(showStudiesBtn, Alignment.MIDDLE_CENTER);
         showStudiesBtn.addLayoutClickListener((LayoutEvents.LayoutClickEvent event) -> {
-             updatedDatasetMap.clear();
-                for (int i : activeQuantDsMap.keySet()) {                    
-                    if (updatedExpandedList.contains(activeQuantDsMap.get(i).getDiseaseCategoryI()) || updatedExpandedList.contains(activeQuantDsMap.get(i).getDiseaseCategoryII())) {
-                        updatedDatasetMap.put(i, activeQuantDsMap.get(i));
-                    }
-
+            updatedDatasetMap.clear();
+            for (int i : activeQuantDsMap.keySet()) {
+                if (updatedExpandedList.contains(activeQuantDsMap.get(i).getDiseaseCategoryI()) || updatedExpandedList.contains(activeQuantDsMap.get(i).getDiseaseCategoryII())) {
+                    updatedDatasetMap.put(i, activeQuantDsMap.get(i));
                 }
+
+            }
             showStudiesBtn.updateData(updatedDatasetMap.values());
             showStudiesBtn.view();
         });
@@ -408,7 +407,7 @@ public abstract class HeatMapLayout extends VerticalLayout {
             @Override
             public void onClick() {
                 updatedDatasetMap.clear();
-                for (int i : activeQuantDsMap.keySet()) {                    
+                for (int i : activeQuantDsMap.keySet()) {
                     if (updatedExpandedList.contains(activeQuantDsMap.get(i).getDiseaseCategoryI()) || updatedExpandedList.contains(activeQuantDsMap.get(i).getDiseaseCategoryII())) {
                         updatedDatasetMap.put(i, activeQuantDsMap.get(i));
                     }
@@ -627,7 +626,8 @@ public abstract class HeatMapLayout extends VerticalLayout {
     }
 
     /**
-     *Reorder disease sub categories in heat-map based on user reorder action
+     * Reorder disease sub categories in heat-map based on user reorder action
+     *
      * @param rowHeaders ordered row headers (disease sub categories)
      * @param colHeaders ordered column headers (disease sub categories)
      */
@@ -669,11 +669,12 @@ public abstract class HeatMapLayout extends VerticalLayout {
 
     }
 
-
     /**
-     *Update heat map selection (expand / collapse) heat-map disease categories 
+     * Update heat map selection (expand / collapse) heat-map disease categories
+     *
      * @param diseaseCategories set of selected disease categories
-     * @param collapsExpandAction  the action happened throw user selection on disease category header
+     * @param collapsExpandAction the action happened throw user selection on
+     * disease category header
      * @param forceUpdate force to update / redraw the heat-map
      */
     public void selectDiseaseCategory(Set<String> diseaseCategories, boolean collapsExpandAction, boolean forceUpdate) {
@@ -827,7 +828,8 @@ public abstract class HeatMapLayout extends VerticalLayout {
     private HeaderCell[] tempRowHeaderCells;
 
     /**
-     *Get Set of expanded disease category
+     * Get Set of expanded disease category
+     *
      * @return Set of expanded disease category
      */
     public Set<String> getUpdatedExpandedList() {
@@ -888,7 +890,7 @@ public abstract class HeatMapLayout extends VerticalLayout {
 
                     @Override
                     public void unSelectData(String valueLabel) {
-                        if (!this.isCollapsedHeader()) { 
+                        if (!this.isCollapsedHeader()) {
                             removeRowSelectedDs(valueLabel);
                         }
                     }
@@ -1138,17 +1140,16 @@ public abstract class HeatMapLayout extends VerticalLayout {
             selectedQuantDiseaseGroupsComparisonList.clear();
             selectedCells.clear();
             for (HeaderCell header : columnHeaderCells.values()) {
-               
 
                 if (header.getValueLabel().equalsIgnoreCase(selectedheader)) {
                     header.getIncludedCells().stream().forEach((tcell) -> {
                         tcell.select();
                         String kI = tcell.getComparison().getComparisonHeader();
-                        System.out.println("at kI "+kI);
+                        System.out.println("at kI " + kI);
                         String[] k1Arr = kI.split(" / ");
                         String kII = k1Arr[1] + " / " + k1Arr[0];
                         HeatmapCell equalCall = comparisonsCellsMap.get(kII);
-                         System.out.println("at kI "+kI+"  "+kII);
+                        System.out.println("at kI " + kI + "  " + kII);
                         if (equalCall != null) {
                             equalCall.unselect();
                             this.selectedQuantDiseaseGroupsComparisonList.remove(equalCall.getComparison());
@@ -1168,11 +1169,11 @@ public abstract class HeatMapLayout extends VerticalLayout {
 
                     });
                     header.select();
-                          
+
                     selectedCells.addAll(header.getIncludedCells());
                     header.getIncludedComparisons().stream().forEach((qdComp) -> {
                         String kI = qdComp.getComparisonHeader();
-                  
+
                         if (kI.startsWith(selectedheader.split("__")[0] + " / ")) {
                             selectedQuantDiseaseGroupsComparisonList.add(qdComp);
                         }
@@ -1209,14 +1210,14 @@ public abstract class HeatMapLayout extends VerticalLayout {
 
                     });
                     header.select();
-                    System.out.println("at included cells "+header.getValueLabel()+"  "+ header.getIncludedCells().size());
+                    System.out.println("at included cells " + header.getValueLabel() + "  " + header.getIncludedCells().size());
                     selectedCells.addAll(header.getIncludedCells());
                     header.getIncludedComparisons().stream().forEach((qdComp) -> {
                         String kI = qdComp.getComparisonHeader();
                         if (kI.startsWith(selectedheader.split("__")[0] + " / ")) {
                             selectedQuantDiseaseGroupsComparisonList.add(qdComp);
                         }
-                        System.out.println("at KI "+kI+"  "+selectedheader);
+                        System.out.println("at KI " + kI + "  " + selectedheader);
                     });
 
                     continue;
@@ -1227,17 +1228,16 @@ public abstract class HeatMapLayout extends VerticalLayout {
         } else {
 
             for (HeaderCell header : columnHeaderCells.values()) {
-                
-                if (header.getValueLabel().equalsIgnoreCase(selectedheader)) { 
-                   
+
+                if (header.getValueLabel().equalsIgnoreCase(selectedheader)) {
+
                     header.getIncludedCells().stream().forEach((tcell) -> {
                         tcell.select();
                         String kI = tcell.getComparison().getComparisonHeader();
                         String[] k1Arr = kI.split(" / ");
                         String kII = k1Arr[1] + " / " + k1Arr[0];
                         HeatmapCell equalCall = comparisonsCellsMap.get(kII);
-                        
-                   
+
                         if (equalCall != null) {
                             equalCall.unselect();
                             this.selectedQuantDiseaseGroupsComparisonList.remove(equalCall.getComparison());
@@ -1257,7 +1257,7 @@ public abstract class HeatMapLayout extends VerticalLayout {
                     header.select();
                     selectedCells.addAll(header.getIncludedCells());
                     header.getIncludedComparisons().stream().forEach((qdComp) -> {
-                        String kI = qdComp.getComparisonHeader(); 
+                        String kI = qdComp.getComparisonHeader();
                         if (kI.startsWith(selectedheader + " / ")) {
                             selectedQuantDiseaseGroupsComparisonList.add(qdComp);
                         }
@@ -1841,7 +1841,8 @@ public abstract class HeatMapLayout extends VerticalLayout {
      * @param equalComparisonMap The map of equal heat map cell to the flipped
      * comparisons
      * @param selectedDiseaseCategory selected disease category
-     * @param expandCollapsAction  the action happened throw user selection on disease category header
+     * @param expandCollapsAction the action happened throw user selection on
+     * disease category header
      */
     public abstract void updateHMThumb(String imgUrl, int datasetNumber, int deactivatedDatasetNumber, Map<QuantDiseaseGroupsComparison, QuantDiseaseGroupsComparison> equalComparisonMap, String selectedDiseaseCategory, boolean expandCollapsAction);
 

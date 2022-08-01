@@ -75,7 +75,7 @@ public class Data_Handler implements Serializable {
      *
      * @return list of publications available in the the resource.
      */
-    public List<Object[]> getPublicationList() {
+    public Map<String,Object[]> getPublicationList() {
         return this.coreLogic.getPublicationList();
     }
 

@@ -130,7 +130,7 @@ public class DatasetButtonsContainerLayout extends VerticalLayout {
      *
      * @param publicationObjects list of publication data arrays.
      */
-    public void setPublicationData(List<Object[]> publicationObjects) {
+    public void setPublicationData(Map<String,Object[]> publicationObjects) {
 
         popUpBtnsContainerGridLayout.removeAllComponents();
         publicationStyle.clear();
@@ -145,29 +145,30 @@ public class DatasetButtonsContainerLayout extends VerticalLayout {
              popUpBtnsContainerGridLayout.setSpacing(false);
         }
         Map<String, Object[]> sortMap = new TreeMap(Collections.reverseOrder());
-        publicationObjects.stream().forEach((obj) -> {
-            String key = obj[2].toString() + "_" + obj[0].toString();
-            sortMap.put(key, obj);
+        publicationObjects.keySet().stream().forEach((key) -> {
+            Object[] obj=publicationObjects.get(key);
+            String pubkey = obj[1].toString() + "_" + key;
+            sortMap.put(pubkey, obj);
         });
         int colcounter = 0;
         rowcounter = 0;
         lastStyle = styleII;
-        for (String quantDSKey : sortMap.keySet()) {
-            Object[] obj = sortMap.get(quantDSKey);
+        for (String publicationKey : sortMap.keySet()) {
+            Object[] obj = sortMap.get(publicationKey);
 
-            if (!publicationStyle.containsKey(obj[0].toString())) {
+            if (!publicationStyle.containsKey(publicationKey)) {
                 if (lastStyle.equalsIgnoreCase(styleI)) {
-                    publicationStyle.put(obj[0].toString(), styleII);
+                    publicationStyle.put(publicationKey, styleII);
                     lastStyle = styleII;
                 } else {
-                    publicationStyle.put(obj[0].toString(), styleI);
+                    publicationStyle.put(publicationKey, styleI);
                     lastStyle = styleI;
                 }
             }
-              String btnName = "<font size=1 >" + obj[2].toString() + "</font><br/>" + obj[1] + "<br/><font size=1 >PMID "+obj[0]+ "</font>";
+              String btnName = "<font size=1 >" + obj[1].toString() + "</font><br/>" + obj[0] + "<br/><font size=1 >PMID "+publicationKey.replace(obj[1].toString()+"_", "")+ "</font>";
 //            String btnName = "<font size=1 >" + obj[2].toString() + "</font><br/>" + obj[1].toString() + "<br/><font size=1 >#Proteins: " + obj[5].toString() + "   #Peptides: " + obj[7].toString() + "</font>";
-            PopupWrapperBtn btn = new PopupWrapperBtn(btnName, obj[1].toString(), obj);
-            btn.addStyleName(publicationStyle.get(obj[0].toString()));
+            PopupWrapperBtn btn = new PopupWrapperBtn(btnName, publicationKey.replace(obj[1].toString()+"_", ""));
+            btn.addStyleName(publicationStyle.get(publicationKey));
             popUpBtnsContainerGridLayout.addComponent(btn, colcounter++, rowcounter);
             if (colcounter >= popUpBtnsContainerGridLayout.getColumns()) {
                 colcounter = 0;

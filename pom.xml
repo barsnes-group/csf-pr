@@ -20,22 +20,13 @@
     <repositories>
         <repository>
             <id>vaadin-addons</id>
-            <url>http://maven.vaadin.com/vaadin-addons</url>
-        </repository>
-        <repository>
-            <id>vaadin-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
+            <url>https://maven.vaadin.com/vaadin-addons</url>
         </repository>
     </repositories>
 
     <dependencyManagement>
         <dependencies>
+      
             <dependency>
                 <groupId>com.vaadin</groupId>
                 <artifactId>vaadin-bom</artifactId>
@@ -72,21 +63,21 @@
             <version>2.1.0</version>
         </dependency>
                 
-                <dependency>
-                    <groupId>org.apache.xmlgraphics</groupId>
-                    <artifactId>batik-svggen</artifactId>
-                    <version>1.8</version>
-                </dependency>
-                <dependency>
-                    <groupId>batik</groupId>
-                    <artifactId>batik-dom</artifactId>
-                    <version>1.6-1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-svggen</artifactId>
+            <version>1.8</version>
+        </dependency>
+        <dependency>
+            <groupId>batik</groupId>
+            <artifactId>batik-dom</artifactId>
+            <version>1.6-1</version>
+        </dependency>
 
 
-		<!--
-		  Needed when using the widgetset optimizer (custom ConnectorBundleLoaderFactory).
-		  
+        <!--
+                  Needed when using the widgetset optimizer (custom ConnectorBundleLoaderFactory).
+                  
           For widgetset compilation, vaadin-client-compiler is automatically added on the
           compilation classpath by vaadin-maven-plugin so normally there is no need for an
           explicit dependency.
@@ -153,6 +144,11 @@
             <groupId>com.byteowls</groupId>
             <artifactId>vaadin-chartjs</artifactId>
             <version>0.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
         </dependency>
     </dependencies>
 

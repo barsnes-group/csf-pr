@@ -3,6 +3,7 @@ package no.uib.probe.csf.pr.touch.view.bigscreen.popupwindows;
 import com.vaadin.server.ThemeResource;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import no.uib.probe.csf.pr.touch.logic.beans.QuantDataset;
 import no.uib.probe.csf.pr.touch.view.core.ImageContainerBtn;
@@ -34,7 +35,7 @@ public abstract class DatasetInformationBtn extends ImageContainerBtn {
         this.studiesInformationWindow = new DatasetInformationWindow(null) {
 
             @Override
-            public List<Object[]> getPublicationsInformation(Set<String> pumedId) {
+            public Map<String,Object[]>  getPublicationsInformation(Set<String> pumedId) {
                 return updatePublicationsData(pumedId);
             }
 
@@ -68,6 +69,6 @@ public abstract class DatasetInformationBtn extends ImageContainerBtn {
      * @param pumedIdSet  Set of publication PubMed id.
      * @return List of Publication information object arrays
      */
-    public abstract List<Object[]> updatePublicationsData(Set<String> pumedIdSet);
+    public abstract Map<String,Object[]>  updatePublicationsData(Set<String> pumedIdSet);
 
 }

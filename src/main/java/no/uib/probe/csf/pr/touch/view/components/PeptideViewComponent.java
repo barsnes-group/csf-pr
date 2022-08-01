@@ -642,7 +642,7 @@ public abstract class PeptideViewComponent extends VerticalLayout implements CSF
                             roc = null;
                         }
                         t1.addItem(new Object[]{(index + 1), groupComp.getDiseaseCategory(), groupComp.getComparisonHeader().replace("__" + groupComp.getDiseaseCategory(), ""), ds.getAuthor(), ds.getPubMedId(), ds.getTypeOfStudy(), ds.getAnalyticalApproach(), ds.getShotgunTargeted(), ds.getAnalyticalMethod(), ds.getTechnology(), ds.getSampleType(), ds.getEnzyme(),
-                            ds.getQuantificationBasis(), ds.getQuantBasisComment(), ds.getIdentifiedProteinsNumber(), ds.getQuantifiedProteinsNumber(), ds.getDiseaseMainGroupI(), ds.getDiseaseSubGroup1(), ds.getDiseaseMainGroup1Number(), ds.getDiseaseMainGroup1Comm(), ds.getDiseaseMainGroup2(), ds.getDiseaseSubGroup2(), ds.getDiseaseMainGroup2Number(), ds.getDiseaseMainGroup2Comm(),
+                            ds.getQuantificationBasis(), quantProt.getQuantBasisComment(), "", ds.getQuantifiedProteinsNumber(), ds.getDiseaseMainGroupI(), ds.getDiseaseSubGroup1(), ds.getDiseaseMainGroup1Number(), ds.getDiseaseMainGroup1Comm(), ds.getDiseaseMainGroup2(), ds.getDiseaseSubGroup2(), ds.getDiseaseMainGroup2Number(), ds.getDiseaseMainGroup2Comm(),
                             ds.getSampleMatching(), ds.getNormalizationStrategy(), ds.getRawDataUrl(), ds.getTotalProtNum(), ds.getTotalPepNum(), ds.getUniqueProtNum(), ds.getUniqePepNum(), quantProt.getUniprotAccessionNumber(), quantProt.getString_fc_value(), quantProt.getString_p_value(), quantProt.getPvalueSignificanceThreshold(), quantProt.getP_value_comments(), roc, quantProt.getAdditionalComments()}, index++);
 
                     }
