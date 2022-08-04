@@ -174,7 +174,7 @@ public class ProteinsInformationOverviewLayout extends VerticalLayout {
             pval = "          ";
         }
         if (quantProtein.getP_value() != -1000000000) {
-            pval += "(" + df.format(quantProtein.getP_value()) + ")";
+            pval += ("(" + df.format(quantProtein.getP_value()) + ")").replace("(-0)", "").replace("(0)", "");
         }
         pValue.setValue(pval, null);
         pValueComm.setValue(quantProtein.getP_value_comments(), null);
@@ -189,7 +189,7 @@ public class ProteinsInformationOverviewLayout extends VerticalLayout {
             strFoldChange = "          ";
         }
         if (quantProtein.getFc_value() != -1000000000) {
-            strFoldChange += "(" + df.format(quantProtein.getFc_value()) + ")";
+            strFoldChange += ("(" + df.format(quantProtein.getFc_value()) + ")").replace("(-0)", "").replace("(0)", "");
         }
         foldChange.setValue(strFoldChange, null);
         String rocv;

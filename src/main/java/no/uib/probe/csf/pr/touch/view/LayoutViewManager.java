@@ -1,6 +1,7 @@
 package no.uib.probe.csf.pr.touch.view;
 
 import com.vaadin.server.VaadinSession;
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import no.uib.probe.csf.pr.touch.view.core.BusyTaskProgressBar;
@@ -14,7 +15,7 @@ import no.uib.probe.csf.pr.touch.view.core.ControllingView;
  *
  *
  */
-public class LayoutViewManager {
+public class LayoutViewManager implements Serializable{
 
     /**
      * Map of registered layout visualization.

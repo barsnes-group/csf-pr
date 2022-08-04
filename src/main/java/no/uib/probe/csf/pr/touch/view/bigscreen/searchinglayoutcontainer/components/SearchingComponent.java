@@ -61,7 +61,7 @@ import org.vaadin.teemu.VaadinIcons;
  * @author Yehia Farag
  *
  */
-public abstract class SearchingComponent extends BigBtn implements Serializable{
+public abstract class SearchingComponent extends BigBtn implements Serializable {
 
     /**
      * The main searching pop-up window (the pop up container) .
@@ -473,8 +473,9 @@ public abstract class SearchingComponent extends BigBtn implements Serializable{
 
         } else {
             selection.setKeyWords(proteinList.keySet());
-            searchQuantificationProtList.stream().filter((protein) -> (proteinList.keySet().contains(protein.getFinalAccession()) && (proteinList.get(protein.getFinalAccession()).contains("all") || proteinList.get(protein.getFinalAccession()).contains(protein.getDiseaseCategoryI()))|| proteinList.get(protein.getFinalAccession()).contains(protein.getDiseaseCategoryII()))).forEach((protein) -> {
-                       
+           
+            searchQuantificationProtList.stream().filter((protein) -> (proteinList.keySet().contains(protein.getFinalAccession()) && ((proteinList.get(protein.getFinalAccession()).contains("all") || proteinList.get(protein.getFinalAccession()).contains(protein.getDiseaseCategoryI())) || proteinList.get(protein.getFinalAccession()).contains(protein.getDiseaseCategoryII())))).forEach((protein) -> {
+                
                 datasetIds.add(protein.getQuantDatasetIndex());
                 proteinAccession.add(protein.getFinalAccession());
                 if (!diseaseCategoriesIdMap.containsKey(protein.getDiseaseCategoryI())) {
@@ -497,10 +498,10 @@ public abstract class SearchingComponent extends BigBtn implements Serializable{
         selection.setDiseaseCategories(diseaseCategories);
         selection.setQuantDatasetIndexes(datasetIds);
         selection.setSelectedProteinsList(proteinAccession);
-        Data_handler.switchToSearchingMode(selection);        
+        Data_handler.switchToSearchingMode(selection);
         loadQuantSearching();
-        CSFPR_Central_Manager.searchSelectionAction(selection); 
-       
+        CSFPR_Central_Manager.searchSelectionAction(selection);
+
     }
 
     /**
@@ -707,7 +708,7 @@ public abstract class SearchingComponent extends BigBtn implements Serializable{
      */
     @Override
     public void onClick() {
-         if (CSFPR_Central_Manager.getQuantSearchSelection() != null && CSFPR_Central_Manager.getQuantSearchSelection().getUserCustomizedComparison() != null) {
+        if (CSFPR_Central_Manager.getQuantSearchSelection() != null && CSFPR_Central_Manager.getQuantSearchSelection().getUserCustomizedComparison() != null) {
             CSFPR_Central_Manager.resetSearchSelection();
         }
         searchingPanel.setVisible(true);

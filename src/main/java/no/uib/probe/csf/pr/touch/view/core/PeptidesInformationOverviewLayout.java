@@ -185,7 +185,7 @@ public class PeptidesInformationOverviewLayout extends VerticalLayout {
             pval = "          ";
         }
         if (peptide.getP_value() != -1000000000) {
-            pval += "(" + df.format(peptide.getP_value()) + ")";
+            pval += ("(" + df.format(peptide.getP_value()) + ")").replace("(-0)", "").replace("(0)", "");
         }
         pValue.setValue(pval, null);
 
@@ -201,7 +201,7 @@ public class PeptidesInformationOverviewLayout extends VerticalLayout {
             foldChane = "          ";
         }
         if (peptide.getFc_value() != -1000000000) {
-            foldChane += "(" + df.format(peptide.getFc_value()) + ")";
+            foldChane += ("(" + df.format(peptide.getFc_value()) + ")").replace("(-0)", "").replace("(0)", "");
         }
         foldChange.setValue(foldChane, null);
         String rocv;

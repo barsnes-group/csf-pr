@@ -111,6 +111,11 @@ public class ProteinSequenceCoverageComponent extends VerticalLayout {
      * @param proteinName the main protein name.
      */
     public ProteinSequenceCoverageComponent(String sequence, Set<QuantPeptide> quantPepSet, int proteinSequenceContainerWidth, final int datasetIndex, String proteinName) {
+        
+        System.out.println("at sequence "+sequence);
+        System.out.println("at quantPepSet "+quantPepSet.size());
+        System.out.println("at datasetIndex "+datasetIndex);
+        
         this.setWidth(100, Unit.PERCENTAGE);
         this.addStyleName("roundedborder");
         this.addStyleName("padding20");

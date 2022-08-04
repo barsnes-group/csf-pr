@@ -70,7 +70,7 @@ public class CoreLogic implements Serializable {
      *
      * @return list of publications available in the the resource
      */
-    public Map<String,Object[]> getPublicationList() {
+    public Map<String, Object[]> getPublicationList() {
 
         return database.getPublicationList();
 
@@ -230,6 +230,7 @@ public class CoreLogic implements Serializable {
             return selectedQuantComparisonsList;
         }
         fullComparisonProtMap.addAll(database.getQuantificationProteins(dsIdsList.toArray()));
+        System.out.println("at quant ds ids "+dsIdsList);
         fullComparisonProtMap.forEach((quant) -> {
             if (!quant.getUniprotAccessionNumber().trim().equalsIgnoreCase("") && !correctorMap.containsKey(quant.getUniprotAccessionNumber())) {
                 if (!quant.getUniprotProteinName().trim().equalsIgnoreCase("")) {
@@ -285,7 +286,7 @@ public class CoreLogic implements Serializable {
                 String protAcc = quant.getUniprotAccessionNumber();
                 String url;
                 if (protAcc.equalsIgnoreCase("")) {
-                   System.out.println("********************* null acc " + protAcc + "  " + quant.getPublicationAccessionNumber() + "  " + comparProtList.containsKey(quant.getPublicationAccessionNumber()));
+                    System.out.println("********************* null acc " + protAcc + "  " + quant.getPublicationAccessionNumber() + "  " + comparProtList.containsKey(quant.getPublicationAccessionNumber()));
                 }
 
                 if (protAcc.trim().equalsIgnoreCase("") || protAcc.equalsIgnoreCase("Not Available") || protAcc.equalsIgnoreCase("Entry Deleted") || protAcc.equalsIgnoreCase("Entry Demerged") || protAcc.equalsIgnoreCase("NOT RETRIEVED") || protAcc.equalsIgnoreCase("DELETED") || protAcc.trim().equalsIgnoreCase("UNREVIEWED")) {
@@ -380,18 +381,14 @@ public class CoreLogic implements Serializable {
 
                 Set<QuantPeptide> quantPeptidesList = comProt.getQuantPeptidesList();
                 for (String key : fullComparisonPeptideMap.keySet()) {
-
-                    if (key.equalsIgnoreCase("__" + (quant.getProtIndex()) + "__" + quant.getQuantDatasetIndex() + "__")) {
+                    if (key.equalsIgnoreCase("__" + (quant.getProtIndex()) + "__")) {
                         if (inverted) {
                             Set<QuantPeptide> updatedQuantPeptidesList = new HashSet<>();
                             fullComparisonPeptideMap.get(key).stream().map((quantPeptide) -> {
                                 if (quantPeptide.getString_fc_value().equalsIgnoreCase("Increased") || quantPeptide.getString_fc_value().equalsIgnoreCase("Increase")) {
-
                                     quantPeptide.setString_fc_value("Decreased");
-
                                 } else if (quantPeptide.getString_fc_value().equalsIgnoreCase("Decreased") || quantPeptide.getString_fc_value().equalsIgnoreCase("Decrease")) {
                                     quantPeptide.setString_fc_value("Increased");
-
                                 }
                                 return quantPeptide;
                             }).map((quantPeptide) -> {
@@ -848,7 +845,7 @@ public class CoreLogic implements Serializable {
         Map<String, Set<QuantPeptide>> quantPeptSet = database.getQuantificationPeptides(dsIds);
 
         for (QuantProtein qProtein : quantProteinSet) {
-            String sigKey = "__" + qProtein.getProtIndex() + "__" + qProtein.getQuantDatasetIndex() + "__";
+            String sigKey = "__" + qProtein.getProtIndex() + "__";
             if (quantPeptSet.containsKey(sigKey)) {
                 Set<QuantPeptide> peptidesSet = quantPeptSet.get(sigKey);
                 if (qProtein.getSequence() != null && !qProtein.getSequence().trim().equalsIgnoreCase("")) {
