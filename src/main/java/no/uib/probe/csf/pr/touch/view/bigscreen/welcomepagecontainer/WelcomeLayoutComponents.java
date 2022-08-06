@@ -552,7 +552,7 @@ public class WelcomeLayoutComponents extends VerticalLayout implements Serializa
 
         VerticalLayout relaseNoteInfo = new VerticalLayout();
         relaseNoteInfo.setWidth(540, Unit.PIXELS);
-        relaseNoteInfo.setHeight(210, Unit.PIXELS);
+//        relaseNoteInfo.setHeight(230, Unit.PIXELS);
         relaseNoteInfo.setSpacing(true);
 
         relaseNoteInfo.setMargin(new MarginInfo(false, true, true, true));
@@ -567,7 +567,7 @@ public class WelcomeLayoutComponents extends VerticalLayout implements Serializa
         relaseNoteInfo.setExpandRatio(relaseNoteHeader, 30);
         initReleaseNote(relaseNoteInfo);
 
-        relaseNoteInfo.setHeight((relaseNoteInfo.getComponentCount() * 30), Unit.PIXELS);
+//        relaseNoteInfo.setHeight((relaseNoteInfo.getComponentCount() * 40), Unit.PIXELS);
         return relaseNoteInfo;
 
     }

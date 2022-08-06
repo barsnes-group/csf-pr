@@ -34,22 +34,7 @@ public class CSFPR_ContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         String version = "";
         ServletContext scx = sce.getServletContext();
-
-        String basepath = scx.getRealPath("/");
-        File file = new File(basepath + "VAADIN/releasenotes.txt");
-        try {
-            FileReader fileReader = new FileReader(file);
-
-            try ( // Always wrap FileReader in BufferedReader.
-                    BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-                String line = bufferedReader.readLine();
-                version = line.split(";")[0].trim().replace(".", "");
-                // Always close files.
-            }
-        } catch (Exception ex) {
-            System.out.println(
-                    "Unable to open file '" + "'" + basepath);
-        } 
+        String basepath = scx.getRealPath("/");        
 
 //        File proteinsFile = new File(basepath + "VAADIN/prot-" + version + ".txt");
         File proteinsFile = new File(basepath + "VAADIN/csf_pr_available_prot_accs.txt");

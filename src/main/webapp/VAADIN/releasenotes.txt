@@ -1,3 +1,6 @@
+2022.08.06 ; Added data from 4 papers
+           ; Jankovska, et al. (2022), Higginbotham, et al. (2020),
+           ; Rotunno, et al. (2020), Hayashi, et al. (2020)
 2020.03.03 ; Added data from 6 papers
            ; Khoonsari, et al. (2019), Lleó, et al. (2019),
            ; Sathe, et al. (2019), Bereman, et al. (2018),
