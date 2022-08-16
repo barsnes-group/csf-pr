@@ -1,5 +1,8 @@
 package no.uib.probe.csf.pr.touch.logic.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  ** This class represents quant protein object that contain all the protein
  * information
@@ -193,6 +196,10 @@ public class QuantProtein implements Comparable<QuantProtein> {
      * Protein has peptides data.
      */
     private boolean peptideProt;
+     /**
+     * Multiple study proteins with same UniProt.
+     */
+    private final List<QuantProtein>multiProteinsSameUniprot=new ArrayList<>();
 
     /**
      * Get the final accession (UniProt or publication-if UniProt accession not
@@ -203,6 +210,16 @@ public class QuantProtein implements Comparable<QuantProtein> {
      */
     public String getFinalAccession() {
         return finalAccession;
+    }
+    public boolean isMultiProtiens(){
+        return !multiProteinsSameUniprot.isEmpty();
+    }
+    public void addQuantProtein(QuantProtein quant){
+        multiProteinsSameUniprot.add(quant);
+    }
+
+    public List<QuantProtein> getMultiProteinsSameUniprot() {
+        return multiProteinsSameUniprot;
     }
 
     /**

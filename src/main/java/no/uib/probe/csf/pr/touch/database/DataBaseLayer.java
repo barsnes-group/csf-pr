@@ -294,6 +294,10 @@ public class DataBaseLayer implements Serializable {
      */
     public Map<String, InitialInformationObject> getQuantDatasetInitialInformationObject() {
         Map<String, InitialInformationObject> diseaseCategoriesMap = new LinkedHashMap<>();
+        diseaseCategoriesMap.put("Multiple Sclerosis", null);
+        diseaseCategoriesMap.put("Alzheimer's", null);
+        diseaseCategoriesMap.put("Parkinson's", null);
+        diseaseCategoriesMap.put("Amyotrophic Lateral Sclerosis", null);
         try {
             Map<String, Object[]> publicationList = this.getPublicationList();
             PreparedStatement selectStudiesStat;
@@ -942,7 +946,6 @@ public class DataBaseLayer implements Serializable {
             StringBuilder sb2 = new StringBuilder();
 
             proteinIndex_studyIndex_Map.keySet().forEach(index -> {
-                System.out.println("at prot index " + index);
 //                for (int index : indexes) {
 
                     sb2.append("  `protein_index` = ").append(index);

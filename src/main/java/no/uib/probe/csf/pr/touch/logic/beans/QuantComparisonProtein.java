@@ -16,6 +16,7 @@ import java.util.Set;
  */
 public class QuantComparisonProtein implements Serializable {
 
+    
     /**
      * Protein accession number.
      */
@@ -251,6 +252,7 @@ public class QuantComparisonProtein implements Serializable {
             addEqualProtein(patientsNumber, dsID);
         }
     }
+    
 
     /**
      * Add +1 for number of equal protein in comparison (protein value didn't

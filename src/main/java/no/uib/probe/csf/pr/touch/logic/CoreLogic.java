@@ -230,7 +230,6 @@ public class CoreLogic implements Serializable {
             return selectedQuantComparisonsList;
         }
         fullComparisonProtMap.addAll(database.getQuantificationProteins(dsIdsList.toArray()));
-        System.out.println("at quant ds ids "+dsIdsList);
         fullComparisonProtMap.forEach((quant) -> {
             if (!quant.getUniprotAccessionNumber().trim().equalsIgnoreCase("") && !correctorMap.containsKey(quant.getUniprotAccessionNumber())) {
                 if (!quant.getUniprotProteinName().trim().equalsIgnoreCase("")) {
@@ -444,12 +443,48 @@ public class CoreLogic implements Serializable {
                         quant.setDiseaseGroupIPatientsNumber(pGrINum);
 
                     }
+                    quant.getMultiProteinsSameUniprot().clear();
                     dsQuantProteinsMap.put("_-_" + quant.getQuantDatasetIndex() + "_-_" + comProt.getProteinAccession() + "_-_", quant);
 
                 } else {
+                    QuantProtein originalQuant = dsQuantProteinsMap.get("_-_" + quant.getQuantDatasetIndex() + "_-_" + comProt.getProteinAccession() + "_-_");
+                    if (inverted) {
+                        if (quant.getString_fc_value().equalsIgnoreCase("Increased") || quant.getString_fc_value().equalsIgnoreCase("Increase")) {
 
+                            quant.setString_fc_value("Decreased");
+
+                        } else if (quant.getString_fc_value().equalsIgnoreCase("Decreased") || quant.getString_fc_value().equalsIgnoreCase("Decrease")) {
+                            quant.setString_fc_value("Increased");
+
+                        }
+                        if (quant.getFc_value() != -1000000000.0) {
+                            quant.setFc_value(quant.getFc_value() * -1.0);
+                        }
+                        String pgI = quant.getDiseaseMainGroupII();
+                        String pSubGI = quant.getOriginalDiseaseSubGroupII();
+                        String pGrIComm = quant.getDiseaseMainGroupIIComment();
+                        int pGrINum = quant.getDiseaseGroupIIPatientsNumber();
+
+                        quant.setDiseaseMainGroupII(quant.getDiseaseMainGroupI());
+                        quant.setDiseaseMainGroupIIComment(quant.getDiseaseMainGroupIComment());
+                        quant.setOriginalDiseaseSubGroupII(quant.getOriginalDiseaseSubGroupI());
+                        quant.setDiseaseGroupIIPatientsNumber(quant.getDiseaseGroupIPatientsNumber());
+
+                        quant.setDiseaseMainGroupI(pgI);
+                        quant.setDiseaseMainGroupIComment(pSubGI);
+                        quant.setOriginalDiseaseSubGroupI(pGrIComm);
+                        quant.setDiseaseGroupIPatientsNumber(pGrINum);
+
+                    }
+                    if (originalQuant.getString_p_value().equalsIgnoreCase(quant.getString_p_value()) && originalQuant.getString_fc_value().equalsIgnoreCase(quant.getString_fc_value()) || (originalQuant.getString_p_value().equalsIgnoreCase("Not Significant") && quant.getString_p_value().equalsIgnoreCase("Not Significant"))) {
+                        originalQuant.addQuantProtein(quant);
+                    } else {
+                        System.out.println("at quant trend " + originalQuant.getString_fc_value() + "  " + originalQuant.getString_p_value() + "  --  " + quant.getString_fc_value() + "  " + quant.getString_p_value());
+                        System.out.println("at major error in data dublicated keys " + ("_-_" + quant.getQuantDatasetIndex() + "_-_" + comProt.getProteinAccession() + "_-_") + "  --- prot index " + quant.getProtIndex());
+                       } 
+                    
                     /////for iso testing remove as soon as possible 
-                    System.out.println("at major error in data dublicated keys " + ("_-_" + quant.getQuantDatasetIndex() + "_-_" + comProt.getProteinAccession() + "_-_"));
+                    
                     continue;
                 }
 

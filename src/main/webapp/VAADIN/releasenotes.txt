@@ -1,13 +1,13 @@
-2022.08.06 ; Added data from 4 papers
+2022.08.16 ; Added data from four papers
            ; Jankovska, et al. (2022), Higginbotham, et al. (2020),
            ; Rotunno, et al. (2020), Hayashi, et al. (2020)
-2020.03.03 ; Added data from 6 papers
+2020.03.03 ; Added data from six papers
            ; Khoonsari, et al. (2019), Lleó, et al. (2019),
            ; Sathe, et al. (2019), Bereman, et al. (2018),
            ; Martin, et al. (2018), Collins, et al. (2015),
            ; Support cross diseases comparisons and multiple disease selection
            ; Added new disease category (Amyotrophic Lateral Sclerosis 'ALS')
-2018.09.26 ; Added data from 5 papers
+2018.09.26 ; Added data from five papers
            ; Timirci-Kahraman, et al. (2018), Begcevic, et al. (06/2018 , 07/2018),
            ; Brinkmalm, et al. (2018), Stoop, et al. (2017)
 2017.09.26 ; Added data from Paterson, et al. (2016)

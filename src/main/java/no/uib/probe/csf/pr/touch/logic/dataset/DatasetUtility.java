@@ -307,6 +307,7 @@ public class DatasetUtility implements Serializable {
             if (quantDatasetInitialInformationObject == null) {
                 return;
             }
+            
             quantDatasetInitialInformationObject.keySet().forEach((diseaseCategoryname) -> {
                 InitialInformationObject initQuantData = quantDatasetInitialInformationObject.get(diseaseCategoryname);
                 updateQuantDatasetsList(diseaseCategoryname, initQuantData.getQuantDatasetsMap());
@@ -354,6 +355,7 @@ public class DatasetUtility implements Serializable {
         activeData.keySet().forEach((key) -> {
             rowLabelList.putAll(activeData.get(key).getActiveRowIds());
         });
+        
         return rowLabelList;
     }
 

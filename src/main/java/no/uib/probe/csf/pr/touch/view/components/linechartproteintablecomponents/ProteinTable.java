@@ -672,7 +672,7 @@ public abstract class ProteinTable extends VerticalLayout implements Property.Va
             String accession = protein.getProteinAccession();//.replace("(unreviewed)", " (Unreviewed)");           
             String name = protein.getProteinName();
             String url = protein.getUrl();
-            String description = "Click to view in UniProt";
+            String description = "Click to view in UniProt";            
             if (url == null) {
                 url = "";
                 if (accession.contains("(")) {
@@ -695,6 +695,7 @@ public abstract class ProteinTable extends VerticalLayout implements Property.Va
                     if (mainProteinTable.getValue() == itemId) {
                         mainProteinTable.unselect(itemId);
                     } else {
+                        System.out.println("at item id "+itemId);
                         mainProteinTable.select(itemId);
                     }
                 }
